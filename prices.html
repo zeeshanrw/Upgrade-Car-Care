@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Prices | Upgrade Car Care</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <div class="promo-bar">
+        🎉 20% OFF - Call Now!     <a href="tel:6477416424" class="phone-link"> 647-741-6424</a> 🎉
+      </div>
+
+      <header class="main-header">
+        <div class="top-bar">
+          <div class="logo">UpGrade Car Care</div>
+          <div class="cta-header">
+            <button onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });">BOOK NOW</button>
+            
+            <a href="tel:6477416424" class="phone-link">647-741-6424</a>
+          </div>
+        </div>
+      
+       
+      </header>
+      
+      <nav class="navbar">
+        <a href="index.html">HOME</a>
+        <a href="#">OUR WORK</a>
+        <a href="prices.html">PRICES</a>
+        <a href="#contact">CONTACT US</a>
+      </nav>
+
+
+  
+
+  <div class="container">
+    <h2>Select Your Car</h2>
+    <div class="car-select">
+      <button onclick="showPrices('small')">Small Car</button>
+      <button onclick="showPrices('sedan')">Sedan</button>
+      <button onclick="showPrices('suv')">Large SUV</button>
+      <button onclick="showPrices('minivan')">Minivan</button>
+      <button onclick="showPrices('pickup')">Pickup Truck</button>
+    </div>
+
+    <div id="pricing-content">
+      <!-- Dynamic pricing table will appear here -->
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 Upgrade Car Care | All rights reserved.
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
