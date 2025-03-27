@@ -71,7 +71,16 @@ const pricingData = {
         </div>
     `
 };
-
+document.querySelectorAll('.car-select button').forEach(button => {
+    button.addEventListener('click', () => {
+      // Remove 'selected' class from all buttons
+      document.querySelectorAll('.car-select button').forEach(btn => {
+        btn.classList.remove('selected');
+      });
+      // Add 'selected' class to clicked one
+      button.classList.add('selected');
+    });
+  });
 function showPrices(type) {
     document.getElementById('pricing-content').innerHTML = pricingData[type];
 }

@@ -7,30 +7,28 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <div class="promo-bar">
-        🎉 20% OFF - Call Now! 🎉
-      </div>
+  <div class="promo-bar">
+    🎉 20% OFF - Call Now!     <a href="tel:6477416424" class="phone-link"> 647-741-6424</a> 🎉
+  </div>
 
 
       <header class="main-header">
         <div class="top-bar">
-          <div class="logo">UpGrade Car Care</div>
-          <div class="cta-header">
-            <button onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });">BOOK NOW</button>
-            <br />
-            <a href="tel:6477416424" class="phone-link">647-741-6424</a>
+          <div class="header-left">
+            <div class="brand-text">UpGrade Car Care</div>
+            <nav class="navbar">
+              <a href="index.html">HOME</a>
+              <a href="#">OUR WORK</a>
+              <a href="prices.html">PRICES</a>
+              <a href="#contact-section">CONTACT US</a>
+            </nav>
+            <div class="cta-header">
+              <button onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });">BOOK NOW</button>
+              <a href="tel:6477416424" class="phone-link-inline">647-741-6424</a>
+            </div>
           </div>
-        </div>
-      
-       
-      </header>
-      
-      <nav class="navbar">
-        <a href="index.html">HOME</a>
-        <a href="#">OUR WORK</a>
-        <a href="prices.html">PRICES</a>
-        <a href="#contact">CONTACT US</a>
-      </nav>
+         
+        </header>
       
 
   <section class="hero-section">
@@ -46,30 +44,46 @@
     </p>
   </section>
 
-  <section class="features-section">
-    <ul>
-      <li>✅ Available 7 days a week</li>
-      <li>✅ Mobile & Indoor Facility</li>
-      <li>✅ All Across the Greater Toronto Area</li>
-      <li>✅ Highest quality products</li>
-      <li>✅ Interior and exterior detailing services</li>
-    </ul>
+  <section class="features-wrap">
+    <div class="features-section">
+      <ul>
+        <li>✅ Available 7 days a week</li>
+        <li>✅ Mobile & Indoor Facility</li>
+        <li>✅ All Across the Greater Toronto Area</li>
+        <li>✅ Highest quality products</li>
+        <li>✅ Interior and exterior detailing services</li>
+      </ul>
+      <button class="book-now-btn" onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });">
+        Book Now and save 20%
+      </button>
+    </div>
+  
+    <div class="spring-message">
+      <p>🌸 It's springtime — clear out the winter mess and give your car a fresh, new life with our premium detailing services!</p>
+    </div>
   </section>
-  <section id="contact" class="contact-section">
-    <h2>Contact Us</h2>
-    <form>
-      <label for="name">Name:</label><br />
-      <input type="text" id="name" name="name" required /><br /><br />
   
-      <label for="email">Email:</label><br />
-      <input type="email" id="email" name="email" required /><br /><br />
-  
-      <label for="message">Message:</label><br />
-      <textarea id="message" name="message" rows="4" required></textarea><br /><br />
-  
-      <button type="submit">Send Message</button>
-    </form>
+  <section class="contact-section" id="contact">
+    <div class="contact-container">
+      <h2>Have questions? Let's talk.</h2>
+      <p>We're always happy to hear from you! To book an appointment, simply give us a call or fill out the form; we will get back to you shortly to confirm your appointment!</p>
+      <form class="contact-form">
+        <input type="text" placeholder="Name*" required />
+        <input type="email" placeholder="Email*" required />
+        <input type="text" placeholder="Phone" />
+        <select required>
+          <option>Select Service*</option>
+          <option>Interior Detailing</option>
+          <option>Exterior Detailing</option>
+          <option>Full Detailing</option>
+        </select>
+        <textarea placeholder="Your Message (Optional)"></textarea>
+        <button type="submit">Submit Form</button>
+      </form>
+    </div>
   </section>
+  
+  
   
   <footer>
     &copy; 2025 Upgrade Car Care | All rights reserved.
