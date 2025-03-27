@@ -13,7 +13,8 @@
       <header class="main-header">
         <div class="top-bar">
           <div class="header-left">
-            <div class="brand-text">UpGrade Car Care</div>
+            <div class="brand-text"><a href="index.html">UpGrade Car Care</a></div>
+
             <nav class="navbar">
               <a href="index.html">HOME</a>
               <a href="#">OUR WORK</a>
@@ -36,18 +37,23 @@
   <div class="container">
     <h2>Select Your Car</h2>
     <div class="car-select">
-      <button onclick="showPrices('small')">Small Car</button>
-      <button onclick="showPrices('sedan')">Sedan</button>
-      <button onclick="showPrices('suv')">Large SUV</button>
-      <button onclick="showPrices('minivan')">Minivan</button>
-      <button onclick="showPrices('pickup')">Pickup Truck</button>
+      <button data-type="small">Small Car</button>
+      <button data-type="sedan">Sedan</button>
+      <button data-type="suv">Large SUV</button>
+      <button data-type="minivan">Minivan</button>
+      <button data-type="pickup">Pickup Truck</button>
     </div>
+    
 
     <div id="pricing-content">
       <!-- Dynamic pricing table will appear here -->
     </div>
   </div>
-
+  
+  
+  
+  
+  
   <footer>
     &copy; 2025 Upgrade Car Care | All rights reserved.
   </footer>
