@@ -103,45 +103,77 @@ const pricingData = {
   
   function showPrices(type) {
     const pricingContainer = document.getElementById('pricing-content');
+  
+    // Car size label mapping
+    const carTypeLabels = {
+      small: 'Small Car',
+      sedan: 'Sedan',
+      suv: 'Large SUV',
+      minivan: 'Minivan',
+      pickup: 'Pickup Truck'
+    };
+  
     pricingContainer.innerHTML = pricingData[type] + `
       <div id="booking-form" class="styled-booking-form">
-    <div class="form-left">
-      <h3>Book Your Service</h3>
-      <form>
-        <input type="text" placeholder="Your Name" required><br>
-        <input type="tel" placeholder="Phone Number" required><br>
-        <textarea placeholder="Additional Message (Optional)"></textarea><br>
-        <button type="submit">Submit Booking</button>
-      </form>
-    </div>
-    <div class="form-right">
-      <h4>Need Help?</h4>
-      <p>📞 Call us directly:</p>
-      <a href="tel:6477416424" class="call-now">647-741-6424</a>
-    </div>
-  </div>
-    `;
+        <div class="form-left">
+          <h3>Book Your Service</h3>
+          <form id="booking-form-element" action="https://formsubmit.co/upgradecarcare9@gmail.com" method="POST">
+  <input type="hidden" name="_next" value="thankyou.html">
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="car_size" id="selected-car">
+  <input type="hidden" name="selected_packages" id="selected-packages">
 
+  <input type="text" name="name" placeholder="Your Name" required><br>
+  <input type="tel" name="phone" placeholder="Phone Number" required><br>
+  <textarea name="message" placeholder="Additional Message (Optional)"></textarea><br>
+
+  <button type="submit">Submit Booking</button>
+</form>
+
+<p id="success-msg" style="display:none; color:green; margin-top:15px; font-weight:bold;">
+  🎉 Thank you! Your booking has been sent successfully.
+</p>
+
+        </div>
+        <div class="form-right">
+          <h4>Need Help?</h4>
+          <p>📞 Call us directly:</p>
+          <a href="tel:6477416424" class="call-now">647-741-6424</a>
+        </div>
+      </div>
+    `;
+  
     attachCheckboxEvents();
     document.getElementById('booking-form').style.display = 'none';
-
   }
   
+  
   function attachCheckboxEvents() {
-    const checkboxes = document.querySelectorAll('.package-checkbox');
     const form = document.getElementById('booking-form');
+    const checkboxes = document.querySelectorAll('.package-checkbox');
+  
     checkboxes.forEach(checkbox => {
       checkbox.addEventListener('change', () => {
-        if (Array.from(checkboxes).some(cb => cb.checked)) {
+        const selected = Array.from(checkboxes)
+          .filter(cb => cb.checked)
+          .map(cb => cb.value)
+          .join(', ');
+  
+        // 🔥 Move this inside the event listener to avoid null reference
+        const packagesInput = document.getElementById('selected-packages');
+        if (packagesInput) packagesInput.value = selected;
+  
+        if (selected) {
           form.style.display = 'block';
           form.scrollIntoView({ behavior: 'smooth', block: 'start' });
-
         } else {
           form.style.display = 'none';
         }
       });
     });
   }
+  
+  
   
   document.addEventListener('DOMContentLoaded', () => {
     const carButtons = document.querySelectorAll('.car-select button');
@@ -160,4 +192,66 @@ const pricingData = {
       defaultBtn.classList.add('selected');
       showPrices('small');
     }
+
+
+    
+
+
   });
+
+
+  document.addEventListener('submit', function (e) {
+    const formElement = document.getElementById('booking-form-element');
+    const popup = document.getElementById('popup-message');
+    const bookingSection = document.querySelector('body');
+  
+    if (e.target === formElement) {
+      e.preventDefault();
+  
+      const selectedPackages = Array.from(document.querySelectorAll('.package-checkbox:checked'))
+        .map(cb => cb.value)
+        .join(', ');
+      const selectedCar = document.querySelector('.car-select button.selected')?.textContent || '';
+  
+      document.getElementById('selected-packages').value = selectedPackages;
+      document.getElementById('selected-car').value = selectedCar;
+  
+      const formData = new FormData(formElement);
+      fetch(formElement.action, {
+        method: 'POST',
+        body: formData,
+      }).then(res => {
+        if (res.ok) {
+          formElement.reset();
+          document.getElementById('booking-form').style.display = 'none';
+  
+          // ✅ Show popup and blur background
+          document.getElementById('popup-message').style.display = 'block';
+          document.getElementById('blur-overlay').style.display = 'block';
+
+  
+          // ✅ Hide popup after 2s and remove blur
+          setTimeout(() => {
+            document.getElementById('popup-message').style.display = 'none';
+            document.getElementById('blur-overlay').style.display = 'none';
+          }, 2000);
+          
+        } else {
+          alert('Oops! Something went wrong.');
+        }
+      });
+    }
+  });
+  
+  
+
+  
+  const navLinks = document.querySelectorAll('.navbar .nav-link');
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
+    });
+  });
+  

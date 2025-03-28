@@ -1,86 +1,83 @@
-html {
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
   scroll-behavior: smooth;
 }
 
-
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    padding: 0;
-    background: #f5f8fc;
-    color: #333;
-  }
-  
-  .main-header {
-    background-color: #582b2b;
-    color: white;
-    padding: 10px 40px;
-    position: sticky;
-    top: 0;
+  font-family: 'Futura', 'Segoe UI', 'Helvetica Neue', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f9f9f9;
+  color: #2B2D42;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+h1, h2, h3 {
+  font-weight: 600;
+}
+.main-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/***************** HEADER *******************************/
+.main-header {
+  background-color: #2B2D42;
+  color: white;
+  padding: 10px 40px;
+  position: sticky;
+  top: 0;
   z-index: 999;
-  }
-  
-  .top-bar {
-    display: flex;
+}
+.top-bar {
+  display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px 40px;
   max-width: 1200px;
   margin: 0 auto;
-  }
-  .header-left {
-    display: flex;
-    align-items: center;
-    gap: 40px;
-  }
+}
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
 
-  .sparkle {
-    position: relative;
-    font-size: 26px;
-    font-weight: bold;
+ 
+ /* BRAND TEXT */
+.glow-bulb {
+  font-size: 26px;
+  font-weight: bold;
+  color: #ffffff;
+  text-decoration: none;
+  position: relative;
+  animation: bulbGlow 6s ease-in-out infinite;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.25);
+}
+@keyframes bulbGlow {
+  0%, 100% {
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.2),
+                 0 0 10px rgba(255, 255, 255, 0.15),
+                 0 0 15px rgba(255, 255, 255, 0.1);
+    color: #ccc;
+  }
+  50% {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8),
+                 0 0 20px rgba(255, 255, 255, 0.6),
+                 0 0 30px rgba(255, 255, 255, 0.4);
     color: white;
-    cursor: pointer;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
-    background: linear-gradient(90deg, #fff, #ffefc2, #fff);
-    background-size: 200% auto;
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-    animation: shimmer 2s linear infinite;
   }
-  .glow-bulb {
-    font-size: 26px;
-    font-weight: bold;
-    color: white;
-    text-decoration: none;
-    position: relative;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.7),
-                 0 0 20px rgba(255, 255, 255, 0.5),
-                 0 0 30px rgba(255, 255, 255, 0.3);
-    animation: bulbGlow 25s ease-in-out infinite;
-  }
-  
-  @keyframes bulbGlow {
-    0%, 100% {
-      text-shadow: 0 0 5px rgba(255, 255, 255, 0.2),
-                   0 0 10px rgba(255, 255, 255, 0.15),
-                   0 0 15px rgba(255, 255, 255, 0.1);
-      color: #ccc;
-    }
-    50% {
-      text-shadow: 0 0 10px rgba(255, 255, 255, 0.8),
-                   0 0 20px rgba(255, 255, 255, 0.6),
-                   0 0 30px rgba(255, 255, 255, 0.4);
-      color: white;
-    }
-  }
+}
   
   
-  
-  @keyframes shimmer {
-    0% { background-position: -100% center; }
-    100% { background-position: 200% center; }
-  }
+ 
   
   .brand-text {
     font-size: 26px;
@@ -99,10 +96,7 @@ body {
   .brand-text a:hover {
     color: #ff5722;
   }
-  @keyframes flash {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.3; }
-  }
+  
   @keyframes pulse {
     0% { transform: scale(1); }
     50% { transform: scale(1.05); }
@@ -119,7 +113,7 @@ body {
   }
   
   .cta-header button {
-    background-color: #ff5722;
+    background-color: #E63946;
     border: none;
     color: white;
     padding: 10px 20px;
@@ -127,35 +121,108 @@ body {
     font-weight: bold;
     border-radius: 5px;
     cursor: pointer;
+    animation: buttonGlow 3s ease-in-out infinite;
   }
   
   .cta-header button:hover {
     background-color: #e64a19;
   }
   
-  .navbar {
-    display: flex;
-    gap: 30px;
-    padding: 0;
-    background: none;
-  }
-  
-  
-  .navbar a {
-    margin: 5px 1px;
-    padding: 5px 10px;
-    text-decoration: none;
-    color: #fff;
-    font-weight: 600;
-    border-radius: 20px; /* 👈 makes them rounded */
-    transition: background 0.3s ease;
-  }
-  
-  
-  .navbar a:hover {
-    background-color: #007bff;
-    color: white;
-  }
+  /* NAVBAR */
+.navbar {
+  display: flex;
+  gap: 30px;
+  padding: 0;
+}
+.navbar a {
+  margin: 5px 1px;
+  padding: 5px 10px;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 20px;
+  transition: background 0.3s ease;
+}
+.navbar a:hover {
+  background-color: rgba(230, 57, 70, 0.2);
+  color: #E63946;
+}
+
+.navbar a.nav-link {
+  position: relative;
+  margin: 5px 1px;
+  padding: 5px 10px;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 20px;
+  transition: color 0.3s ease;
+}
+
+.navbar a.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 100%;
+  background: white;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.navbar a.nav-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.navbar a.nav-link.active::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+
+/* Success popup */
+/* Blur background */
+.blur-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  backdrop-filter: blur(5px);
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: 999;
+  display: none;
+}
+.popup-message {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #ffffff;
+  color: #2B2D42;
+  padding: 20px 30px;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+  z-index: 1000;
+  font-weight: bold;
+  font-size: 18px;
+  display: none;
+  text-align: center;
+}
+.popup-visible {
+  opacity: 1;
+}
+
+.blur-background {
+  filter: blur(4px);
+  pointer-events: none;
+  user-select: none;
+}
+
+/*******************************************************/
 
   .container {
     max-width: 900px;
@@ -216,32 +283,28 @@ body {
   }
   
   .book-now-btn {
-    background-color: #ff5722;
+    background-color: #007bff;
+    color: white;
     border: none;
-    color: rgb(245, 244, 244);
+    border-radius: 8px;
     padding: 12px 25px;
-    font-size: 16px;
-    font-weight: bold;
-    border-radius: 20px;
-    cursor: pointer;
-    animation: buttonGlow 5s ease-in-out infinite;
-    box-shadow: 0 0 10px rgba(255, 87, 34, 0.4);
-    transition: transform 0.3s ease;
+    font-weight: 600;
+    box-shadow: 0 2px 10px rgba(0, 123, 255, 0.15);
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
   }
   
   .book-now-btn:hover {
-    background-color: #e64a19;
-    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.25);
+    transform: translateY(-2px);
   }
+  
   
   @keyframes buttonGlow {
     0%, 100% {
-      box-shadow: 0 0 10px rgba(255, 87, 34, 0.2),
-                  0 0 20px rgba(255, 87, 34, 0.15);
+      box-shadow: 0 0 5px rgba(230, 57, 70, 0.3);
     }
     50% {
-      box-shadow: 0 0 20px rgba(255, 87, 34, 0.8),
-                  0 0 30px rgba(255, 87, 34, 0.6);
+      box-shadow: 0 0 20px rgba(230, 57, 70, 0.8);
     }
   }
   
@@ -424,44 +487,41 @@ body {
   
 /***************************** Contact us-ends ***********************************/
 .car-select button.selected {
-  background-color: #445247; /* green or any color you want */
+  background-color: #4d545c;
   color: white;
+  font-weight: bold;
   border: 2px solid #1e7e34;
 }
 
- 
+ /* PROMO BAR */
 .promo-bar {
-  background-color: #474d47;
-  color: rgb(236, 236, 236);
+  background-color: #E63946;
+  color: white;
   text-align: center;
   font-weight: bold;
   padding: 8px 0;
   font-size: 16px;
- 
 }
-
 .flash-text {
-  animation: flash 1.2s infinite;
+  animation: flash 6s ease-in-out infinite;
 }
+@keyframes flash {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+/* PROMO BAR */
+
+
   .cta-header {
     margin-left: auto;
     text-align: right;
   }
-  html, body {
-    height: 100%;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-  }
+ 
   
   body {
     flex: 1;
   }
-  .car-select button.selected {
-    background-color: #4d545c;
-    color: white;
-    font-weight: bold;
-  }
+  
   
   .package-select {
     display: flex;
@@ -535,11 +595,29 @@ body {
     background-color: #1e7e34;
   }
   
-  footer {
-    background: #1e1e1e;
-    color: white;
-    text-align: center;
-    padding: 20px;
-    margin-top: auto;
-  }
-  
+/* FOOTER */
+footer {
+  background: #2B2D42;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+}
+/********************** whatsapp*************************/
+.whatsapp-float {
+  position: fixed;
+  bottom: 120px;
+  right: 20px;
+  z-index: 999;
+  cursor: pointer;
+}
+
+.whatsapp-icon {
+  width: 50px;
+  height: 50px;
+  transition: transform 0.3s ease;
+}
+
+.whatsapp-icon:hover {
+  transform: scale(1.1);
+}

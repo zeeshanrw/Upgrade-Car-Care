@@ -5,8 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Upgrade Car Care | Home</title>
   <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
 </head>
 <body>
+  <div class="main-wrapper">
   <div class="promo-bar">
     <span class="flash-text">🎉 20% OFF - Call Now! </span>     <a href="tel:6477416424" class="phone-link"> 647-741-6424</a> 🎉
   </div>
@@ -17,14 +20,15 @@
           <div class="header-left">
             <div class="brand-text"><a href="index.html" class="brand-text glow-bulb">UpGrade Car Care</a></div>
             <nav class="navbar">
-              <a href="index.html">HOME</a>
-              <a href="#">OUR WORK</a>
-              <a href="prices.html">PRICES</a>
-              <a href="#contact">CONTACT US</a>
+              <a href="index.html" class="nav-link active">HOME</a>
+              <a href="ourwork.html" class="nav-link">OUR WORK</a>
+              <a href="prices.html" class="nav-link">PRICES</a>
+              <a href="#contact" class="nav-link">CONTACT US</a>
             </nav>
             <div class="cta-header">
               <button onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });">BOOK NOW</button>
               <a href="tel:6477416424" class="phone-link-inline">647-741-6424</a>
+
             </div>
           </div>
          
@@ -67,26 +71,34 @@
     <div class="contact-container">
       <h2>Have questions? Let's talk.</h2>
       <p>We're always happy to hear from you! To book an appointment, simply give us a call or fill out the form; we will get back to you shortly to confirm your appointment!</p>
-      <form class="contact-form">
-        <input type="text" placeholder="Name*" required />
-        <input type="email" placeholder="Email*" required />
-        <input type="text" placeholder="Phone" />
-        <select required>
+      
+      <form class="contact-form" action="https://formsubmit.co/upgradecarcare9@gmail.com" method="POST">
+        <input type="text" name="name" placeholder="Name*" required />
+        <input type="email" name="email" placeholder="Email*" required />
+        <input type="text" name="phone" placeholder="Phone" />
+        <select name="service" required>
+
           <option>Select Service*</option>
           <option>Interior Detailing</option>
           <option>Exterior Detailing</option>
           <option>Full Detailing</option>
+          <option>Request a Call back</option>
         </select>
-        <textarea placeholder="Your Message (Optional)"></textarea>
+        <textarea name="message" placeholder="Your Message (Optional)"></textarea>
+
         <button type="submit">Submit Form</button>
       </form>
     </div>
   </section>
   
-  
+</div>
   
   <footer>
     &copy; 2025 Upgrade Car Care | All rights reserved.
   </footer>
+  <a href="https://wa.me/16477416424" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp">
+    <img src="images/whatsapp.png" alt="WhatsApp" class="whatsapp-icon" />
+  </a>
+  
 </body>
 </html>
