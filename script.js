@@ -146,8 +146,32 @@ const pricingData = {
     attachCheckboxEvents();
     document.getElementById('booking-form').style.display = 'none';
   }
+
+
+
+  function smoothScrollTo(targetY, duration = 1000) {
+    const startY = window.scrollY;
+    const distance = targetY - startY;
+    const startTime = performance.now();
   
+    function scrollStep(currentTime) {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const ease = progress < 0.5
+        ? 2 * progress * progress
+        : -1 + (4 - 2 * progress) * progress;
   
+      window.scrollTo(0, startY + distance * ease);
+  
+      if (elapsed < duration) {
+        requestAnimationFrame(scrollStep);
+      }
+    }
+  
+    requestAnimationFrame(scrollStep);
+  }
+
+
   function attachCheckboxEvents() {
     const form = document.getElementById('booking-form');
     const checkboxes = document.querySelectorAll('.package-checkbox');
@@ -165,10 +189,15 @@ const pricingData = {
   
         if (selected) {
           form.style.display = 'block';
-          form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          const yOffset = -300;
+          const y = form.getBoundingClientRect().top + window.pageYOffset + yOffset;
+          smoothScrollTo(y, 1200); // you can tweak duration (ms)
+
         } else {
           form.style.display = 'none';
-        }
+          const pricingTop = document.getElementById('pricing-content').getBoundingClientRect().top + window.pageYOffset - 335;
+          smoothScrollTo(pricingTop, 600); // Scrolls back up to the top of pricing
+          }
       });
     });
   }
@@ -254,4 +283,29 @@ const pricingData = {
       link.classList.add('active');
     });
   });
+
+  
+  function closeSpringPopup() {
+    const popup = document.getElementById("springPopup");
+    if (popup) popup.style.display = "none";
+    sessionStorage.setItem("springPopupClosed", "true"); // This hides it for current visit
+  }
+  
+  window.addEventListener("load", () => {
+    const hasClosed = sessionStorage.getItem("springPopupClosed");
+  
+    if (!hasClosed) {
+      setTimeout(() => {
+        const popup = document.getElementById("springPopup");
+        if (popup) popup.style.display = "flex";
+      }, 1500); // Delay optional
+    }
+  
+    // Attach click event to the close button
+    const closeBtn = document.querySelector(".close-popup");
+    if (closeBtn) {
+      closeBtn.addEventListener("click", closeSpringPopup);
+    }
+  });
+  
   

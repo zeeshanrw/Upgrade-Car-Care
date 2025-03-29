@@ -26,7 +26,7 @@
               <a href="#contact" class="nav-link">CONTACT US</a>
             </nav>
             <div class="cta-header">
-              <button onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });">BOOK NOW</button>
+              <button onclick="window.location.href='prices.html'">BOOK NOW</button>
               <a href="tel:6477416424" class="phone-link-inline">647-741-6424</a>
 
             </div>
@@ -34,45 +34,66 @@
          
         </header>
       
-
-  <section class="hero-section">
-    <h1>
-      <span>Car Detailing Services in</span><br />
-      <strong>Toronto and the GTA</strong>
-    </h1>
-  </section>
-
-  <section class="intro-section">
-    <p>
-      Upgrade Car Care is your expert, fully mobile auto detailing service with an indoor facility available as well.
-    </p>
-  </section>
-
-  <section class="features-wrap">
-    <div class="features-section">
-      <ul>
-        <li>✅ Available 7 days a week</li>
-        <li>✅ Mobile & Indoor Facility</li>
-        <li>✅ All Across the Greater Toronto Area</li>
-        <li>✅ Highest quality products</li>
-        <li>✅ Interior and exterior detailing services</li>
-      </ul>
-      <button class="book-now-btn" onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });">
-        Book Now and save 20%
-      </button>
-    </div>
+        <div class="main-wrapper"> 
+          <div class="first-fold">
+          <section class="hero-section"> 
+            <h1>
+              <span>Car Detailing Services in</span><br />
+              <strong>Toronto and the GTA</strong>
+            </h1>
+          </section>
+          <section class="intro-section">
+            <p>
+              Upgrade Car Care is your expert, fully mobile auto detailing service with an indoor facility available as well.
+            </p>
+          </section>
+          
+          <section class="features-wrap">
+            <div class="features-grid">
+              <div class="feature-card">
+                <svg class="feature-icon" viewBox="0 0 24 24" fill="none"><path d="M12 8V4M12 20v-4M16.24 7.76l2.83-2.83M4.93 19.07l2.83-2.83M20 12h-4M4 12h4M7.76 7.76 4.93 4.93M19.07 19.07l-2.83-2.83" stroke="#E63946" stroke-width="2"/></svg>
+                <h4>Open 7 Days</h4>
+                <p>Book anytime, we're always available.</p>
+              </div>
+              <div class="feature-card">
+                <svg class="feature-icon" viewBox="0 0 24 24" fill="none"><path d="M3 13h2l1 5h12l1-5h2M5 13V9a4 4 0 0 1 4-4h6a4 4 0 0 1 4 4v4M9 17v2a2 2 0 0 0 4 0v-2" stroke="#E63946" stroke-width="2"/></svg>
+                <h4>Mobile & Indoor</h4>
+                <p>We come to you or meet us at our facility.</p>
+              </div>
+              <div class="feature-card">
+                <svg class="feature-icon" viewBox="0 0 24 24" fill="none"><path d="M21 10c0 6-9 13-9 13S3 16 3 10a9 9 0 1 1 18 0Z" stroke="#E63946" stroke-width="2"/><circle cx="12" cy="10" r="3" stroke="#E63946" stroke-width="2"/></svg>
+                <h4>GTA Coverage</h4>
+                <p>Serving all of Toronto & surrounding cities.</p>
+              </div>
+              <div class="feature-card">
+                <svg class="feature-icon" viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 10h18M3 14h18M3 18h18" stroke="#E63946" stroke-width="2"/></svg>
+                <h4>Top-Grade Products</h4>
+                <p>Premium detailing with the best materials.</p>
+              </div>
+              <div class="feature-card">
+                <svg class="feature-icon" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 18h16M4 12h16" stroke="#E63946" stroke-width="2"/></svg>
+                <h4>Inside & Out</h4>
+                <p>Interior, exterior, or both – we’ve got it.</p>
+              </div>
+            </div>
+          </section>
+          </div>
+        </div>
   
-    <div class="spring-message">
-      <p>🌸 It's springtime — clear out the winter mess and give your car a fresh, new life with our premium detailing services!</p>
-    </div>
-  </section>
-  
+
   <section class="contact-section" id="contact">
     <div class="contact-container">
-      <h2>Have questions? Let's talk.</h2>
-      <p>We're always happy to hear from you! To book an appointment, simply give us a call or fill out the form; we will get back to you shortly to confirm your appointment!</p>
+      <div class="contact-left">
+        <div class="contact-left-content">
+          <h2>Have<br>questions?<br>Let's talk.</h2>
+          <p>
+            We're always happy to hear from you! To book an appointment, simply give us a call or fill out the form; we will get back to you shortly to confirm your appointment!
+          </p>
+        </div>
+      </div>
       
       <form class="contact-form" action="https://formsubmit.co/upgradecarcare9@gmail.com" method="POST">
+        <!-- your input fields here -->
         <input type="text" name="name" placeholder="Name*" required />
         <input type="email" name="email" placeholder="Email*" required />
         <input type="text" name="phone" placeholder="Phone" />
@@ -93,12 +114,57 @@
   
 </div>
   
-  <footer>
-    &copy; 2025 Upgrade Car Care | All rights reserved.
-  </footer>
+<footer>
+  <div class="footer-container">
+    <div class="footer-column">
+      <h4>Upgrade Car Care</h4>
+      <p>Premium car detailing service serving Toronto & GTA. Mobile & indoor options available.</p>
+    </div>
+
+    <div class="footer-column">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="ourwork.html">Our Work</a></li>
+        <li><a href="prices.html">Prices</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:6477416424">📞 647-741-6424</a></li>
+        <li><a href="mailto:upgradecarcare9@gmail.com">📧 upgradecarcare9@gmail.com</a></li>
+        <li><a href="https://wa.me/16477416424" target="_blank">💬 WhatsApp Chat</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    &copy; 2025 Upgrade Car Care. All rights reserved.
+  </div>
+</footer>
+
   <a href="https://wa.me/16477416424" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp">
     <img src="images/whatsapp.png" alt="WhatsApp" class="whatsapp-icon" />
   </a>
+
+  <script src="script.js"></script>
+  <div class="spring-popup-overlay" id="springPopup">
+    <div class="spring-popup-content">
+      <button class="close-popup" onclick="closeSpringPopup()">×</button>
+      <p class="popup-message-text">
+        🌸 It's springtime — clear out the winter mess and give your car a fresh, new life with our premium detailing services!<br><br>
+        🎉 Enjoy <strong>20% OFF</strong> this season!
+      </p>
+      <div class="popup-buttons">
+        <button class="popup-btn" onclick="window.location.href='prices.html'">Book Now</button>
+        <button class="popup-btn secondary" onclick="window.location.href='tel:6477416424'">Request a Phone Call</button>
+      </div>
+    </div>
+  </div>
+
   
 </body>
 </html>
