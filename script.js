@@ -224,6 +224,34 @@ const pricingData = {
 
 
     
+    const callbackForm = document.getElementById('callbackForm');
+if (callbackForm) {
+  callbackForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const formData = new FormData(this);
+    fetch(this.action, {
+      method: 'POST',
+      body: formData,
+    }).then(response => {
+      if (response.ok) {
+        this.reset();
+        closeCallbackPopup();
+        const thankyouPopup = document.getElementById('thankyouPopup');
+        thankyouPopup.style.display = 'flex';
+
+        setTimeout(() => {
+          thankyouPopup.style.display = 'none';
+        }, 3000);
+      } else {
+        alert("❌ Something went wrong. Please try again.");
+      }
+    }).catch(error => {
+      console.error('Form submission error:', error);
+      alert("⚠️ Network error. Please try again later.");
+    });
+  });
+}
 
 
   });
@@ -252,6 +280,14 @@ const pricingData = {
       }).then(res => {
         if (res.ok) {
           formElement.reset();
+          const thankyouPopup = document.getElementById('thankyouPopup');
+          thankyouPopup.style.display = 'flex';
+          setTimeout(() => {
+            thankyouPopup.style.display = 'none';
+          }, 3000);
+
+
+
           document.getElementById('booking-form').style.display = 'none';
   
           // ✅ Show popup and blur background
@@ -297,7 +333,12 @@ const pricingData = {
     if (!hasClosed) {
       setTimeout(() => {
         const popup = document.getElementById("springPopup");
-        if (popup) popup.style.display = "flex";
+        if (popup) {
+          popup.style.display = "flex";
+popup.style.opacity = "0";
+setTimeout(() => popup.style.opacity = "1", 10);
+
+        }
       }, 1500); // Delay optional
     }
   
@@ -307,5 +348,24 @@ const pricingData = {
       closeBtn.addEventListener("click", closeSpringPopup);
     }
   });
+  
+  const menuIcon = document.getElementById('menuToggle');
+  const navMenu = document.getElementById('mainNav');
+
+  menuIcon.addEventListener('click', () => {
+    navMenu.classList.toggle('show');
+  });
+
+  // Request a call back button 
+  function openCallbackPopup() {
+    document.getElementById('callbackPopup').style.display = 'flex';
+  }
+  
+  function closeCallbackPopup() {
+    document.getElementById('callbackPopup').style.display = 'none';
+  }
+  
+  // Optionally handle form submit
+ 
   
   

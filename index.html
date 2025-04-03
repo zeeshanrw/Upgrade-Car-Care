@@ -9,33 +9,79 @@
 
 </head>
 <body>
+
+  
+  
   <div class="main-wrapper">
   <div class="promo-bar">
     <span class="flash-text">🎉 20% OFF - Call Now! </span>     <a href="tel:6477416424" class="phone-link"> 647-741-6424</a> 🎉
   </div>
-
-
-      <header class="main-header">
-        <div class="top-bar">
-          <div class="header-left">
-            <div class="brand-text"><a href="index.html" class="brand-text glow-bulb">UpGrade Car Care</a></div>
-            <nav class="navbar">
+  <header class="main-header">
+    <div class="top-bar">
+      <div class="header-left">
+        <div class="brand-text">
+          <a href="index.html" class="brand-text glow-bulb">UpGrade Car Care</a>
+        </div>
+        <!-- 📱 Menu Icon for Mobile -->
+            <div class="menu-icon" id="menuToggle">
+              <img src="images/menu.png" alt="Menu" />
+            </div>
+          
+            <!-- 🌐 Navigation Bar -->
+            <nav class="navbar" id="mainNav">
               <a href="index.html" class="nav-link active">HOME</a>
               <a href="ourwork.html" class="nav-link">OUR WORK</a>
               <a href="prices.html" class="nav-link">PRICES</a>
               <a href="#contact" class="nav-link">CONTACT US</a>
             </nav>
+          
             <div class="cta-header">
+              <!-- Tablet Button Nav -->
+               <div class="tablet-nav">
+                <a href="tel:6477416424" class="tablet-btn red">📞 Call</a>
+                <a href="prices.html" class="tablet-btn blue">📋 Prices</a>
+                <a href="https://wa.me/16477416424" class="tablet-btn green" target="_blank">💬 WhatsApp</a>
+              </div>
+
               <button onclick="window.location.href='prices.html'">BOOK NOW</button>
               <a href="tel:6477416424" class="phone-link-inline">647-741-6424</a>
-
             </div>
           </div>
-         
+    </div>
+    <!-- Only rendered on mobile, controlled by CSS -->
+    <div class="mobile-header">
+      <div class="brand-text">
+        <a href="index.html">Upgrade Car Care</a>
+      </div>
+    
+      <div style="display: flex; gap: 15px; align-items: center;">
+        <a href="tel:6477416424" class="phone-icon">
+          <img src="images/phone-call.png" alt="Call" />
+        </a>
+    
+        <div class="menu-hover-area">
+          <img src="images/menu.png" class="menu-icon" alt="Menu" />
+          <nav class="navbar mobile-dropdown">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="ourwork.html" class="nav-link">Our Work</a>
+            <a href="prices.html" class="nav-link">Prices</a>
+            <a href="#contact" class="nav-link">Contact Us</a>
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+
         </header>
       
         <div class="main-wrapper"> 
           <div class="first-fold">
+            <div class="video-bg-wrapper">
+              <video autoplay muted loop playsinline class="bg-video">
+                <source src="videos/6158070-hd_1920_1080_30fps.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
           <section class="hero-section"> 
             <h1>
               <span>Car Detailing Services in</span><br />
@@ -48,38 +94,33 @@
             </p>
           </section>
           
-          <section class="features-wrap">
-            <div class="features-grid">
-              <div class="feature-card">
-                <svg class="feature-icon" viewBox="0 0 24 24" fill="none"><path d="M12 8V4M12 20v-4M16.24 7.76l2.83-2.83M4.93 19.07l2.83-2.83M20 12h-4M4 12h4M7.76 7.76 4.93 4.93M19.07 19.07l-2.83-2.83" stroke="#E63946" stroke-width="2"/></svg>
-                <h4>Open 7 Days</h4>
-                <p>Book anytime, we're always available.</p>
-              </div>
-              <div class="feature-card">
-                <svg class="feature-icon" viewBox="0 0 24 24" fill="none"><path d="M3 13h2l1 5h12l1-5h2M5 13V9a4 4 0 0 1 4-4h6a4 4 0 0 1 4 4v4M9 17v2a2 2 0 0 0 4 0v-2" stroke="#E63946" stroke-width="2"/></svg>
-                <h4>Mobile & Indoor</h4>
-                <p>We come to you or meet us at our facility.</p>
-              </div>
-              <div class="feature-card">
-                <svg class="feature-icon" viewBox="0 0 24 24" fill="none"><path d="M21 10c0 6-9 13-9 13S3 16 3 10a9 9 0 1 1 18 0Z" stroke="#E63946" stroke-width="2"/><circle cx="12" cy="10" r="3" stroke="#E63946" stroke-width="2"/></svg>
-                <h4>GTA Coverage</h4>
-                <p>Serving all of Toronto & surrounding cities.</p>
-              </div>
-              <div class="feature-card">
-                <svg class="feature-icon" viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 10h18M3 14h18M3 18h18" stroke="#E63946" stroke-width="2"/></svg>
-                <h4>Top-Grade Products</h4>
-                <p>Premium detailing with the best materials.</p>
-              </div>
-              <div class="feature-card">
-                <svg class="feature-icon" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 18h16M4 12h16" stroke="#E63946" stroke-width="2"/></svg>
-                <h4>Inside & Out</h4>
-                <p>Interior, exterior, or both – we’ve got it.</p>
+
+          
+          <section class="features-list-section">
+            <ul class="features-list">
+              <li> Available 7 days a week</li>
+              <li> Mobile & Indoor Facility</li>
+              <li> All Across the Greater Toronto Area</li>
+              <li> Highest quality products</li>
+              <li> Interior and exterior detailing services</li>
+            </ul>
+            
+            <a href="prices.html" class="features-btn">BOOK NOW</a>
+
+            <div class="features-spring-wrap">
+              <div class="spring-note">
+                <h3>🌸 Spring is Here!</h3>
+                <p>Shake off the winter mess, dirt, and food spills.</p>
+                <p>Now is the perfect time to restore your car’s sparkle with a fresh, showroom-quality detail.</p>
+                <button onclick="window.location.href='prices.html'">Get 20% Off Today</button>
               </div>
             </div>
           </section>
           </div>
+          
         </div>
-  
+      
+        <div class="white-divider"></div>
 
   <section class="contact-section" id="contact">
     <div class="contact-container">
@@ -146,11 +187,14 @@
   </div>
 </footer>
 
-  <a href="https://wa.me/16477416424" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp">
-    <img src="images/whatsapp.png" alt="WhatsApp" class="whatsapp-icon" />
-  </a>
+ 
+  <a class="callback-float" title="Request a Call Back" onclick="openCallbackPopup()">
+    <img src="images/phone-call.png" alt="Call Back" class="callback-icon" />
+    <span class="callback-text">Request a Call Back</span>
 
-  <script src="script.js"></script>
+  </a>
+  
+  
   <div class="spring-popup-overlay" id="springPopup">
     <div class="spring-popup-content">
       <button class="close-popup" onclick="closeSpringPopup()">×</button>
@@ -160,11 +204,47 @@
       </p>
       <div class="popup-buttons">
         <button class="popup-btn" onclick="window.location.href='prices.html'">Book Now</button>
-        <button class="popup-btn secondary" onclick="window.location.href='tel:6477416424'">Request a Phone Call</button>
+        <button class="popup-btn secondary" onclick="openCallbackPopup()">Request a Phone Call</button>
+
       </div>
     </div>
   </div>
+  <div class="callback-popup-overlay" id="callbackPopup">
+    <div class="callback-popup-content">
+      <button class="close-callback" onclick="closeCallbackPopup()">×</button>
+      <h3>📞 Request a Call Back</h3>
 
+
+      <form id="callbackForm" action="https://formsubmit.co/upgradecarcare9@gmail.com" method="POST">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="thankyou.html">
+      
+        <input type="text" name="name" placeholder="Your Name*" required />
+        <input type="tel" name="phone" placeholder="Phone Number*" required />
+        <input type="date" name="date" required />
+        <input type="time" name="time" required />
+        <select name="day" required>
+          <option value="">Select Day*</option>
+          <option>Monday</option>
+          <option>Tuesday</option>
+          <option>Wednesday</option>
+          <option>Thursday</option>
+          <option>Friday</option>
+          <option>Saturday</option>
+          <option>Sunday</option>
+        </select>
+        <textarea name="message" placeholder="Optional message..."></textarea>
+        <button type="submit">Submit Request</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="thankyou-popup-overlay" id="thankyouPopup">
+    <div class="thankyou-popup">
+      <p>🎉 Thank you! Your request has been submitted.</p>
+    </div>
+  </div>
   
+  <script src="script.js"></script>
 </body>
 </html>

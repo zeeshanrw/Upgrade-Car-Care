@@ -6,6 +6,7 @@
   
   <link rel="stylesheet" href="styles.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 </head>
 <body>
@@ -18,21 +19,27 @@
         <div class="top-bar">
           <div class="header-left">
             <div class="brand-text"><a href="index.html">UpGrade Car Care</a></div>
-
-            <nav class="navbar">
-              <a href="index.html" class="nav-link ">Home</a>
-              <a href="ourwork.html" class="nav-link">Our Work</a>
-              <a href="prices.html" class="nav-link active">Prices</a>
-              <a href="index.html#contact" class="nav-link">Contact Us</a>
+      
+            <nav class="navbar" id="mainNav">
+              <div class="menu-icon">
+                <img src="images/menu.png" alt="Menu" />
+              </div>
+              <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="ourwork.html" class="nav-link">Our Work</a>
+                <a href="prices.html" class="nav-link active">Prices</a>
+                <a href="index.html#contact" class="nav-link">Contact Us</a>
+              </div>
             </nav>
+      
             <div class="cta-header">
               <button onclick="window.location.href='index.html#contact'">Book Now</button>
               <a href="tel:6477416424" class="phone-link-inline">647-741-6424</a>
             </div>
           </div>
-         
-        </header>
-  
+        </div>
+      </header>
+      
 
   <div class="container">
     <div class="car-section-wrapper">
@@ -86,14 +93,6 @@
   </div>
 </footer>
 
-
-  
-  <a href="https://wa.me/16477416424" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp">
-    <img src="images/whatsapp.png" alt="WhatsApp" class="whatsapp-icon" />
-  </a>
-  
-
-
 <!-- Blur Overlay -->
 <div id="blur-overlay" class="blur-overlay"></div>
 
@@ -101,7 +100,50 @@
 <div id="popup-message" class="popup-message">
   🎉 Thank you! Your Message has been sent successfully.
 </div>
+<!-- Request a Call Back Floating Button -->
+<a class="callback-float" title="Request a Call Back" onclick="openCallbackPopup()">
+  <img src="images/phone-call.png" alt="Call Back" class="callback-icon" />
+  <span class="callback-text">Request a Call Back</span>
+</a>
 
+<!-- Request a Call Back Popup -->
+<div class="callback-popup-overlay" id="callbackPopup">
+  <div class="callback-popup-content">
+    <button class="close-callback" onclick="closeCallbackPopup()">×</button>
+    <h3>📞 Request a Call Back</h3>
+    <form id="callbackForm" action="https://formsubmit.co/upgradecarcare9@gmail.com" method="POST">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="thankyou.html">
+
+      <input type="text" name="name" placeholder="Your Name*" required />
+      <input type="tel" name="phone" placeholder="Phone Number*" required />
+      <input type="date" name="date" required />
+      <input type="time" name="time" required />
+      <select name="day" required>
+        <option value="">Select Day*</option>
+        <option>Monday</option>
+        <option>Tuesday</option>
+        <option>Wednesday</option>
+        <option>Thursday</option>
+        <option>Friday</option>
+        <option>Saturday</option>
+        <option>Sunday</option>
+      </select>
+      <textarea name="message" placeholder="Optional message..."></textarea>
+      <button type="submit">Submit Request</button>
+    </form>
+    
+  </div>
+</div>
+
+
+
+
+<div class="thankyou-popup-overlay" id="thankyouPopup">
+  <div class="thankyou-popup">
+    <p>🎉 Thank you! Your request has been submitted.</p>
+  </div>
+</div>
 <script src="script.js"></script>
 
 
