@@ -1,186 +1,225 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Basic Meta Tags -->
   <meta charset="UTF-8" />
-  <title>Prices | Upgrade Car Care</title>
-  
-  <link rel="stylesheet" href="styles.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <meta name="description" content="Transparent pricing for premium car detailing in Toronto. View packages for small cars, sedans, SUVs, minivans and pickup trucks.">
+  
+  <title>Pricing | Upgrade Car Care - Toronto Mobile Detailing</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="images/car-wash.png">
+<link rel="apple-touch-icon" href="images/car-wash.png">
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="styles.css" />
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
 </head>
+
 <body>
-
-
-
-
+  <!-- ==================== MAIN WRAPPER ==================== -->
   <div class="main-wrapper">
-    <div class="promo-bar">
-        🎉 20% OFF - Call Now!     <a href="tel:6477416424" class="phone-link"> 647-741-6424</a> 🎉
-      </div>
-
-      <header class="main-header">
-        <div class="top-bar">
-          <!--------Mobile header --------->
-  <div class="mobile-header">
-    <div class="brand-text">
-      <a href="index.html">Upgrade Car Care</a>
+    
+    <!-- ==================== PROMO BAR ==================== -->
+    <div class="promo-bar" aria-label="Special offer">
+      🎉 20% OFF - Call Now! <a href="tel:6476416424" class="phone-link">647-741-6424</a> 🎉
     </div>
-  
-    <div class="mobile-nav-icons">
-      <a href="tel:6477416424" class="phone-icon" aria-label="Call Us">
-        <img src="images/phone-call.png" alt="Phone Icon" />
-      </a>
-      <a href="#contact" class="book-now-btn">Book Now</a>
-      <div class="menu-icon" id="menuToggle">
-        <img src="images/menu.png" alt="Menu Icon" />
-      </div>
-    </div>
-  </div>
-  
-  <!-- Slide-down menu -->
-  <div class="mobile-menu-overlay" id="mobileMenu">
-    <a href="index.html">Home</a>
-    <a href="index.html#aboutus">About Us</a>
-    <a href="prices.html">Prices</a>
-    <a href="#contact">Contact</a>
-  </div>
-  <!--------Mobile header --------->
-          <div class="header-left">
-            <div class="brand-text"><a href="index.html">UpGrade Car Care</a></div>
-      
-            <nav class="navbar" id="mainNav">
-              <div class="menu-icon">
-                <img src="images/menu.png" alt="Menu" />
-              </div>
-              <div class="nav-links">
-                <a href="index.html" class="nav-link">Home</a>
-                <a href="index.html#aboutus" class="nav-link">About Us</a>
-                <a href="prices.html" class="nav-link active">Prices</a>
-                <a href="index.html#contact" class="nav-link">Contact Us</a>
-              </div>
-            </nav>
-      
-            <div class="cta-header">
-              <button onclick="window.location.href='index.html#contact'">Book Now</button>
-              <a href="tel:6477416424" class="phone-link-inline">647-741-6424</a>
+    
+    <!-- ==================== HEADER ==================== -->
+    <header class="main-header">
+      <div class="top-bar">
+        
+        <!-- MOBILE HEADER -->
+        <div class="mobile-header">
+          <div class="brand-text">
+            <a href="index.html">Upgrade Car Care</a>
+          </div>
+        
+          <div class="mobile-nav-icons">
+            <a href="tel:6476416424" class="phone-icon" aria-label="Call Us">
+              <img src="images/phone-call.png" alt="Phone Icon" />
+            </a>
+            <a href="#contact" class="book-now-btn">Book Now</a>
+            <div class="menu-icon" id="menuToggle" aria-label="Toggle menu">
+              <img src="images/menu.png" alt="Menu Icon" />
             </div>
           </div>
         </div>
-      </header>
-      
-      <div class="pricing-header">
-        <h2>Our Packages & Pricing</h2>
-        <p>Simple. Transparent. No Hidden Fees.</p>
+        
+        <!-- MOBILE MENU (slide-down) -->
+        <div class="mobile-menu-overlay" id="mobileMenu">
+          <a href="index.html">Home</a>
+          <a href="index.html#aboutus">About Us</a>
+          <a href="prices.html" class="active">Prices</a>
+          <a href="index.html#contact">Contact</a>
+        </div>
+        
+        <!-- DESKTOP HEADER CONTENT -->
+        <div class="header-left">
+          <div class="brand-text">
+            <a href="index.html">UpGrade Car Care</a>
+          </div>
+    
+          <!-- MAIN NAVIGATION -->
+          <nav class="navbar" id="mainNav" aria-label="Main navigation">
+            <div class="menu-icon">
+              <img src="images/menu.png" alt="Menu" />
+            </div>
+            <div class="nav-links">
+              <a href="index.html" class="nav-link">Home</a>
+              <a href="index.html#aboutus" class="nav-link">About Us</a>
+              <a href="prices.html" class="nav-link active">Prices</a>
+              <a href="index.html#contact" class="nav-link">Contact Us</a>
+            </div>
+          </nav>
+    
+          <!-- CALL TO ACTION -->
+          <div class="cta-header">
+            <button onclick="window.location.href='index.html#contact'">Book Now</button>
+            <a href="tel:6476416424" class="phone-link-inline">647-741-6424</a>
+          </div>
+        </div>
       </div>
+    </header>
+    
+    <!-- ==================== PRICING HEADER ==================== -->
+    <div class="pricing-header">
+      <h1>Our Packages & Pricing</h1>
+      <p>Simple. Transparent. No Hidden Fees.</p>
+    </div>
+    
+    <!-- ==================== PRICING CONTENT ==================== -->
+    <div class="container">
+      <div class="car-section-wrapper">
+        <h2>Select Your Vehicle Type</h2>
+        
+        <!-- VEHICLE SELECTION BUTTONS -->
+        <div class="car-select" role="tablist" aria-label="Vehicle type selection">
+          <button data-type="small" role="tab" aria-selected="true">
+            <img src="images/small-car.png" alt="Small Car" class="car-icon"> Small Car
+          </button>
+          <button data-type="sedan" role="tab">
+            <img src="images/sedan-car.png" alt="Sedan" class="car-icon"> Sedan
+          </button>
+          <button data-type="suv" role="tab">
+            <img src="images/suv.png" alt="Large SUV" class="car-icon"> Large SUV
+          </button>
+          <button data-type="minivan" role="tab">
+            <img src="images/minivan.png" alt="Minivan" class="car-icon"> Minivan
+          </button>
+          <button data-type="pickup" role="tab">
+            <img src="images/pickup-car.png" alt="Pickup Truck" class="car-icon"> Pickup Truck
+          </button>
+        </div>
+        
+        <!-- DYNAMIC PRICING CONTENT WILL LOAD HERE -->
+        <div id="pricing-content" aria-live="polite"></div>
+      </div>
+    </div>
+  </div> <!-- End of main-wrapper -->
+  
+  <!-- ==================== FOOTER ==================== -->
+  <footer aria-label="Website footer">
+    <div class="footer-container">
+      <!-- COMPANY INFO -->
+      <div class="footer-column">
+        <h4>Upgrade Car Care</h4>
+        <p>Premium car detailing service serving Toronto & GTA. Fully Mobile Detailing Service</p>
+      </div>
+
+      <!-- QUICK LINKS -->
+      <div class="footer-column">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#aboutus">About Us</a></li>
+          <li><a href="prices.html">Prices</a></li>
+          <li><a href="index.html#contact">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <!-- CONTACT INFO -->
+      <div class="footer-column">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:6476416424">📞 647-741-6424</a></li>
+          <li><a href="mailto:upgradecarcare9@gmail.com">📧 upgradecarcare9@gmail.com</a></li>
+          <li><a href="https://wa.me/16476416424" target="_blank" rel="noopener">💬 WhatsApp Chat</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- COPYRIGHT -->
+    <div class="footer-bottom">
+      &copy; <span id="current-year">2025</span> Upgrade Car Care. All rights reserved.
+    </div>
+  </footer>
+
+  <!-- ==================== POPUPS & MODALS ==================== -->
+  
+  <!-- BLUR OVERLAY -->
+  <div id="blur-overlay" class="blur-overlay" aria-hidden="true"></div>
+  
+  <!-- SUCCESS MESSAGE POPUP -->
+  <div id="popup-message" class="popup-message" role="alert">
+    🎉 Thank you! Your Message has been sent successfully.
+  </div>
+  
+  <!-- CALLBACK FLOATING BUTTON -->
+  <a class="callback-float" title="Request a Call Back" onclick="openCallbackPopup()" aria-label="Request callback">
+    <img src="images/phone-call.png" alt="Call Back" class="callback-icon" />
+    <span class="callback-text">Request a Call Back</span>
+  </a>
+
+  <!-- CALLBACK FORM POPUP -->
+  <div class="callback-popup-overlay" id="callbackPopup" role="dialog" aria-modal="true" aria-labelledby="callbackPopupHeading">
+    <div class="callback-popup-content">
+      <button class="close-callback" onclick="closeCallbackPopup()" aria-label="Close popup">×</button>
+      <h3 id="callbackPopupHeading">📞 Request a Call Back</h3>
       
-  <div class="container">
-    <div class="car-section-wrapper">
-    <h2>Select Your Car</h2>
-    <div class="car-select">
-      <button data-type="small">Small Car</button>
-      <button data-type="sedan">Sedan</button>
-      <button data-type="suv">Large SUV</button>
-      <button data-type="minivan">Minivan</button>
-      <button data-type="pickup">Pickup Truck</button>
-    </div>
-    
+      <form id="callbackForm" action="https://formsubmit.co/upgradecarcare9@gmail.com" method="POST">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="thankyou.html">
+        <input type="hidden" name="_subject" value="Callback Request from Pricing Page">
 
-    <div id="pricing-content">
+        <input type="text" name="name" placeholder="Your Name*" required aria-label="Your name">
+        <input type="tel" name="phone" placeholder="Phone Number*" required aria-label="Your phone number">
+        <input type="date" name="date" required aria-label="Preferred date">
+        <input type="time" name="time" required aria-label="Preferred time">
+        
+        <select name="day" required aria-label="Preferred day of week">
+          <option value="">Select Day*</option>
+          <option>Monday</option>
+          <option>Tuesday</option>
+          <option>Wednesday</option>
+          <option>Thursday</option>
+          <option>Friday</option>
+          <option>Saturday</option>
+          <option>Sunday</option>
+        </select>
+        
+        <textarea name="message" placeholder="Optional message..." aria-label="Additional information"></textarea>
+        <button type="submit">Submit Request</button>
+      </form>
     </div>
   </div>
+
+  <!-- THANK YOU POPUP -->
+  <div class="thankyou-popup-overlay" id="thankyouPopup" role="alertdialog" aria-modal="true">
+    <div class="thankyou-popup">
+      <p>🎉 Thank you! Your request has been submitted.</p>
+    </div>
+  </div>
+
+  <!-- ==================== SCRIPTS ==================== -->
+  <script src="script.js"></script>
   
-  
-</div>
-  
-</div>
-<footer>
-  <div class="footer-container">
-    <div class="footer-column">
-      <h4>Upgrade Car Care</h4>
-      <p>Premium car detailing service serving Toronto & GTA. Fully Mobile Detailing Service</p>
-    </div>
-
-    <div class="footer-column">
-      <h4>Quick Links</h4>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="ourwork.html">About Us</a></li>
-        <li><a href="prices.html">Prices</a></li>
-        <li><a href="#contact">Contact Us</a></li>
-      </ul>
-    </div>
-
-    <div class="footer-column">
-      <h4>Contact</h4>
-      <ul>
-        <li><a href="tel:6477416424">📞 647-741-6424</a></li>
-        <li><a href="mailto:upgradecarcare9@gmail.com">📧 upgradecarcare9@gmail.com</a></li>
-        <li><a href="https://wa.me/16477416424" target="_blank">💬 WhatsApp Chat</a></li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="footer-bottom">
-    &copy; 2025 Upgrade Car Care. All rights reserved.
-  </div>
-</footer>
-
-<!-- Blur Overlay -->
-<div id="blur-overlay" class="blur-overlay"></div>
-
-<!-- Popup Success Message -->
-<div id="popup-message" class="popup-message">
-  🎉 Thank you! Your Message has been sent successfully.
-</div>
-<!-- Request a Call Back Floating Button -->
-<a class="callback-float" title="Request a Call Back" onclick="openCallbackPopup()">
-  <img src="images/phone-call.png" alt="Call Back" class="callback-icon" />
-  <span class="callback-text">Request a Call Back</span>
-</a>
-
-<!-- Request a Call Back Popup -->
-<div class="callback-popup-overlay" id="callbackPopup">
-  <div class="callback-popup-content">
-    <button class="close-callback" onclick="closeCallbackPopup()">×</button>
-    <h3>📞 Request a Call Back</h3>
-    <form id="callbackForm" action="https://formsubmit.co/upgradecarcare9@gmail.com" method="POST">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_next" value="thankyou.html">
-
-      <input type="text" name="name" placeholder="Your Name*" required />
-      <input type="tel" name="phone" placeholder="Phone Number*" required />
-      <input type="date" name="date" required />
-      <input type="time" name="time" required />
-      <select name="day" required>
-        <option value="">Select Day*</option>
-        <option>Monday</option>
-        <option>Tuesday</option>
-        <option>Wednesday</option>
-        <option>Thursday</option>
-        <option>Friday</option>
-        <option>Saturday</option>
-        <option>Sunday</option>
-      </select>
-      <textarea name="message" placeholder="Optional message..."></textarea>
-      <button type="submit">Submit Request</button>
-    </form>
-    
-  </div>
-</div>
-
-
-
-
-<div class="thankyou-popup-overlay" id="thankyouPopup">
-  <div class="thankyou-popup">
-    <p>🎉 Thank you! Your request has been submitted.</p>
-  </div>
-</div>
-<script src="script.js"></script>
-
-
+  <!-- Auto-update copyright year -->
+  <script>
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+  </script>
 </body>
-
-
 </html>

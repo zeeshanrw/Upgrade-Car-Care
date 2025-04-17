@@ -1,394 +1,575 @@
-const pricingData = {
-    small: `
-      <div class="pricing-table">
-        <h3>Pricing for Small Car</h3>
-        <table>
-          <thead>
-            <tr><th>Select</th><th>Package</th><th>Price</th><th>Time</th><th>Details</th></tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><input type="checkbox" class="package-checkbox" value="Interior Detailing ($160)" /></td>
-              <td>Interior Detailing</td><td>$160</td><td>1–1.5 Hrs</td><td>Full interior clean, vacuum, windows</td>
-            </tr>
-            <tr>
-              <td><input type="checkbox" class="package-checkbox" value="Exterior Detailing ($260)" /></td>
-              <td>Exterior Detailing</td><td>$260</td><td>1.5–2 Hrs</td><td>Hand wash, tire clean, spray wax</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    `,
-    sedan: `
-      <div class="pricing-table">
-        <h3>Pricing for Sedan</h3>
-        <table>
-          <thead>
-            <tr><th>Select</th><th>Package</th><th>Price</th><th>Time</th><th>Details</th></tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><input type="checkbox" class="package-checkbox" value="Interior Detailing ($180)" /></td>
-              <td>Interior Detailing</td><td>$180</td><td>1.5 Hrs</td><td>Interior + trunk shampoo, vacuum</td>
-            </tr>
-            <tr>
-              <td><input type="checkbox" class="package-checkbox" value="Exterior Detailing ($280)" /></td>
-              <td>Exterior Detailing</td><td>$280</td><td>2 Hrs</td><td>Exterior hand wash + rim polish</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    `,
-    suv: `
-      <div class="pricing-table">
-        <h3>Pricing for Large SUV</h3>
-        <table>
-          <thead>
-            <tr><th>Select</th><th>Package</th><th>Price</th><th>Time</th><th>Details</th></tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><input type="checkbox" class="package-checkbox" value="Interior Detailing ($200)" /></td>
-              <td>Interior Detailing</td><td>$200</td><td>1.75 Hrs</td><td>Seats, carpets, leather conditioning</td>
-            </tr>
-            <tr>
-              <td><input type="checkbox" class="package-checkbox" value="Exterior Detailing ($300)" /></td>
-              <td>Exterior Detailing</td><td>$300</td><td>2.15 Hrs</td><td>Spray wax + clay bar</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    `,
-    minivan: `
-      <div class="pricing-table">
-        <h3>Pricing for Minivan</h3>
-        <table>
-          <thead>
-            <tr><th>Select</th><th>Package</th><th>Price</th><th>Time</th><th>Details</th></tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><input type="checkbox" class="package-checkbox" value="Interior Detailing ($210)" /></td>
-              <td>Interior Detailing</td><td>$210</td><td>2 Hrs</td><td>Full cabin & trunk deep clean</td>
-            </tr>
-            <tr>
-              <td><input type="checkbox" class="package-checkbox" value="Exterior Detailing ($320)" /></td>
-              <td>Exterior Detailing</td><td>$320</td><td>2.5 Hrs</td><td>Wax + polish + tire dressing</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    `,
-    pickup: `
-      <div class="pricing-table">
-        <h3>Pricing for Pickup Truck</h3>
-        <table>
-          <thead>
-            <tr><th>Select</th><th>Package</th><th>Price</th><th>Time</th><th>Details</th></tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><input type="checkbox" class="package-checkbox" value="Interior Detailing ($220)" /></td>
-              <td>Interior Detailing</td><td>$220</td><td>2.25 Hrs</td><td>Seats, windows, deep vacuum</td>
-            </tr>
-            <tr>
-              <td><input type="checkbox" class="package-checkbox" value="Exterior Detailing ($350)" /></td>
-              <td>Exterior Detailing</td><td>$350</td><td>2.75 Hrs</td><td>Full polish, clay bar, sealant</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    `
-  };
-  
-  function showPrices(type) {
-    const pricingContainer = document.getElementById('pricing-content');
-  
-    // Car size label mapping
-    const carTypeLabels = {
-      small: 'Small Car',
-      sedan: 'Sedan',
-      suv: 'Large SUV',
-      minivan: 'Minivan',
-      pickup: 'Pickup Truck'
-    };
-  
-    pricingContainer.innerHTML = pricingData[type] + `
-      <div id="booking-form" class="styled-booking-form">
-        <div class="form-left">
-          <h3>Book Your Service</h3>
-          <form id="booking-form-element" action="https://formsubmit.co/upgradecarcare9@gmail.com" method="POST">
-  <input type="hidden" name="_next" value="thankyou.html">
-  <input type="hidden" name="_captcha" value="false">
-  <input type="hidden" name="car_size" id="selected-car">
-  <input type="hidden" name="selected_packages" id="selected-packages">
+/**
+ * Upgrade Car Care - Main JavaScript File
+ * 
+ * Features:
+ * - Pricing table functionality
+ * - Form submissions with validation
+ * - Smooth scrolling
+ * - Mobile menu handling
+ * - Popup management
+ */
 
-  <input type="text" name="name" placeholder="Your Name" required><br>
-  <input type="tel" name="phone" placeholder="Phone Number" required><br>
-  <textarea name="message" placeholder="Additional Message (Optional)"></textarea><br>
+// Constants
+const CAR_TYPES = {
+  small: 'Small Car',
+  sedan: 'Sedan',
+  suv: 'Large SUV',
+  minivan: 'Minivan',
+  pickup: 'Pickup Truck'
+};
 
-  <button type="submit">Submit Booking</button>
-</form>
-
-<p id="success-msg" style="display:none; color:green; margin-top:15px; font-weight:bold;">
-  🎉 Thank you! Your booking has been sent successfully.
-</p>
-
-        </div>
-        <div class="form-right">
-          <h4>Need Help?</h4>
-          <p>📞 Call us directly:</p>
-          <a href="tel:6477416424" class="call-now">647-741-6424</a>
-        </div>
-      </div>
-    `;
-  
-    attachCheckboxEvents();
-    document.getElementById('booking-form').style.display = 'none';
+const PRICING_DATA = {
+  small: {
+    packages: [
+      {
+        name: 'Interior Detailing',
+        price: '$160',
+        time: '1–1.5 Hrs',
+        description: 'Full interior clean, vacuum, windows'
+      },
+      {
+        name: 'Exterior Detailing',
+        price: '$260',
+        time: '1.5–2 Hrs',
+        description: 'Hand wash, tire clean, spray wax'
+      }
+    ]
+  },
+  // Other car types follow same structure
+  sedan: {
+    packages: [
+      {
+        name: 'Interior Detailing',
+        price: '$180',
+        time: '1.5 Hrs',
+        description: 'Interior + trunk shampoo, vacuum'
+      },
+      {
+        name: 'Exterior Detailing',
+        price: '$280',
+        time: '2 Hrs',
+        description: 'Exterior hand wash + rim polish'
+      }
+    ]
+  },
+  suv: {
+    packages: [
+      {
+        name: 'Interior Detailing',
+        price: '$200',
+        time: '1.75 Hrs',
+        description: 'Seats, carpets, leather conditioning'
+      },
+      {
+        name: 'Exterior Detailing',
+        price: '$300',
+        time: '2.15 Hrs',
+        description: 'Spray wax + clay bar'
+      }
+    ]
+  },
+  minivan: {
+    packages: [
+      {
+        name: 'Interior Detailing',
+        price: '$210',
+        time: '2 Hrs',
+        description: 'Full cabin & trunk deep clean'
+      },
+      {
+        name: 'Exterior Detailing',
+        price: '$320',
+        time: '2.5 Hrs',
+        description: 'Wax + polish + tire dressing'
+      }
+    ]
+  },
+  pickup: {
+    packages: [
+      {
+        name: 'Interior Detailing',
+        price: '$220',
+        time: '2.25 Hrs',
+        description: 'Seats, windows, deep vacuum'
+      },
+      {
+        name: 'Exterior Detailing',
+        price: '$350',
+        time: '2.75 Hrs',
+        description: 'Full polish, clay bar, sealant'
+      }
+    ]
   }
+};
 
+// DOM Elements
+const elements = {
+  pricingContent: document.getElementById('pricing-content'),
+  bookingForm: document.getElementById('booking-form-element'),
+  callbackForm: document.getElementById('callbackForm'),
+  mobileMenuToggle: document.getElementById('menuToggle'),
+  mobileMenu: document.getElementById('mobileMenu'),
+  springPopup: document.getElementById('springPopup'),
+  thankyouPopup: document.getElementById('thankyouPopup')
+};
 
-
-  function smoothScrollTo(targetY, duration = 1000) {
+// Utility Functions
+const utils = {
+  /**
+   * Smooth scroll to target position
+   * @param {number} targetY - Target scroll position
+   * @param {number} duration - Animation duration in ms
+   */
+  smoothScrollTo(targetY, duration = 1000) {
     const startY = window.scrollY;
     const distance = targetY - startY;
     const startTime = performance.now();
-  
+
     function scrollStep(currentTime) {
       const elapsed = currentTime - startTime;
       const progress = Math.min(elapsed / duration, 1);
       const ease = progress < 0.5
         ? 2 * progress * progress
         : -1 + (4 - 2 * progress) * progress;
-  
+
       window.scrollTo(0, startY + distance * ease);
-  
+
       if (elapsed < duration) {
         requestAnimationFrame(scrollStep);
       }
     }
-  
+
     requestAnimationFrame(scrollStep);
+  },
+
+  /**
+   * Show a temporary popup message
+   * @param {string} message - Message to display
+   * @param {string} type - Type of message (success, error, info)
+   * @param {number} duration - How long to show the message in ms
+   */
+  showPopupMessage(message, type = 'success', duration = 3000) {
+    const popup = document.createElement('div');
+    popup.className = `popup-message ${type}`;
+    popup.textContent = message;
+    document.body.appendChild(popup);
+
+    setTimeout(() => {
+      popup.remove();
+    }, duration);
+  },
+
+  /**
+   * Format phone number for display
+   * @param {string} phone - Raw phone number
+   * @returns {string} Formatted phone number
+   */
+  formatPhoneNumber(phone) {
+    return phone.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
   }
+};
 
+// Pricing Module
+const pricingModule = {
+  /**
+   * Generate HTML for pricing table
+   * @param {string} carType - Type of car
+   * @returns {string} HTML string
+   */
+  generatePricingTable(carType) {
+    const packages = PRICING_DATA[carType].packages;
+    
+    let tableHTML = `
+      <div class="pricing-table">
+        <h3>Pricing for ${CAR_TYPES[carType]}</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Select</th>
+              <th>Package</th>
+              <th>Price</th>
+              <th>Time</th>
+              <th>Details</th>
+            </tr>
+          </thead>
+          <tbody>
+    `;
 
-  function attachCheckboxEvents() {
+    packages.forEach(pkg => {
+      tableHTML += `
+        <tr>
+          <td>
+            <input type="checkbox" 
+                   class="package-checkbox" 
+                   value="${pkg.name} (${pkg.price})"
+                   data-price="${pkg.price.replace('$', '')}"
+                   aria-label="Select ${pkg.name} package">
+          </td>
+          <td>${pkg.name}</td>
+          <td>${pkg.price}</td>
+          <td>${pkg.time}</td>
+          <td>${pkg.description}</td>
+        </tr>
+      `;
+    });
+
+    tableHTML += `
+          </tbody>
+        </table>
+      </div>
+    `;
+
+    return tableHTML;
+  },
+
+  /**
+   * Show pricing for specific car type
+   * @param {string} type - Car type key
+   */
+  showPrices(type) {
+    if (!elements.pricingContent) return;
+
+    const pricingHTML = this.generatePricingTable(type);
+    const bookingFormHTML = `
+      <div id="booking-form" class="styled-booking-form">
+        <div class="form-left">
+          <h3>Book Your Service</h3>
+          <form id="booking-form-element" action="https://formsubmit.co/upgradecarcare9@gmail.com" method="POST">
+            <input type="hidden" name="_next" value="thankyou.html">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="car_size" id="selected-car" value="${CAR_TYPES[type]}">
+            <input type="hidden" name="selected_packages" id="selected-packages">
+
+            <input type="text" name="name" placeholder="Your Name" required aria-label="Your Name">
+            <input type="tel" name="phone" placeholder="Phone Number" required aria-label="Phone Number">
+            <textarea name="message" placeholder="Additional Message (Optional)" aria-label="Additional Message"></textarea>
+            <button type="submit">Submit Booking</button>
+          </form>
+          <p id="success-msg" class="success-message">
+            🎉 Thank you! Your booking has been sent successfully.
+          </p>
+        </div>
+        <div class="form-right">
+          <h4>Need Help?</h4>
+          <p>📞 Call us directly:</p>
+          <a href="tel:6477416424" class="call-now">${utils.formatPhoneNumber('6477416424')}</a>
+        </div>
+      </div>
+    `;
+
+    elements.pricingContent.innerHTML = pricingHTML + bookingFormHTML;
+    document.getElementById('booking-form').style.display = 'none';
+    this.attachCheckboxEvents();
+  },
+
+  /**
+   * Attach event listeners to package checkboxes
+   */
+  attachCheckboxEvents() {
     const form = document.getElementById('booking-form');
     const checkboxes = document.querySelectorAll('.package-checkbox');
-  
+
     checkboxes.forEach(checkbox => {
       checkbox.addEventListener('change', () => {
-        const selected = Array.from(checkboxes)
+        const selectedPackages = Array.from(checkboxes)
           .filter(cb => cb.checked)
-          .map(cb => cb.value)
-          .join(', ');
-  
-        // 🔥 Move this inside the event listener to avoid null reference
+          .map(cb => cb.value);
+
         const packagesInput = document.getElementById('selected-packages');
-        if (packagesInput) packagesInput.value = selected;
-  
-        if (selected) {
+        if (packagesInput) packagesInput.value = selectedPackages.join(', ');
+
+        if (selectedPackages.length > 0) {
           form.style.display = 'block';
           const yOffset = -300;
           const y = form.getBoundingClientRect().top + window.pageYOffset + yOffset;
-          smoothScrollTo(y, 1200); // you can tweak duration (ms)
-
+          utils.smoothScrollTo(y, 1200);
         } else {
           form.style.display = 'none';
-          const pricingTop = document.getElementById('pricing-content').getBoundingClientRect().top + window.pageYOffset - 335;
-          smoothScrollTo(pricingTop, 600); // Scrolls back up to the top of pricing
-          }
+          const pricingTop = elements.pricingContent.getBoundingClientRect().top + window.pageYOffset - 335;
+          utils.smoothScrollTo(pricingTop, 600);
+        }
       });
     });
-  }
-  
-  
-  
-  document.addEventListener('DOMContentLoaded', () => {
+  },
+
+  /**
+   * Initialize pricing module
+   */
+  init() {
     const carButtons = document.querySelectorAll('.car-select button');
+    if (!carButtons.length) return;
+
     carButtons.forEach(button => {
       button.addEventListener('click', () => {
         carButtons.forEach(btn => btn.classList.remove('selected'));
         button.classList.add('selected');
         const type = button.dataset.type;
-        if (type) showPrices(type);
+        if (type) this.showPrices(type);
       });
     });
-  
+
     // Auto-select 'small' on load
     const defaultBtn = document.querySelector('.car-select button[data-type="small"]');
     if (defaultBtn) {
       defaultBtn.classList.add('selected');
-      showPrices('small');
+      this.showPrices('small');
     }
+  }
+};
 
-
-    
-    const callbackForm = document.getElementById('callbackForm');
-if (callbackForm) {
-  callbackForm.addEventListener('submit', function (e) {
+// Form Handling Module
+const formModule = {
+  /**
+   * Handle booking form submission
+   * @param {Event} e - Form submit event
+   */
+  handleBookingSubmit(e) {
     e.preventDefault();
+    const form = e.target;
 
-    const formData = new FormData(this);
-    fetch(this.action, {
+    // Validate form
+    if (!this.validateForm(form)) return;
+
+    const formData = new FormData(form);
+    const selectedCar = document.querySelector('.car-select button.selected')?.textContent || '';
+    formData.set('car_size', selectedCar);
+
+    fetch(form.action, {
       method: 'POST',
       body: formData,
-    }).then(response => {
+    })
+    .then(response => {
       if (response.ok) {
-        this.reset();
-        closeCallbackPopup();
-        const thankyouPopup = document.getElementById('thankyouPopup');
-        thankyouPopup.style.display = 'flex';
-
-        setTimeout(() => {
-          thankyouPopup.style.display = 'none';
-        }, 3000);
+        form.reset();
+        this.showSuccessMessage();
       } else {
-        alert("❌ Something went wrong. Please try again.");
+        throw new Error('Form submission failed');
       }
-    }).catch(error => {
+    })
+    .catch(error => {
       console.error('Form submission error:', error);
-      alert("⚠️ Network error. Please try again later.");
+      utils.showPopupMessage('⚠️ Failed to submit form. Please try again.', 'error');
     });
-  });
-}
+  },
 
+  /**
+   * Handle callback form submission
+   * @param {Event} e - Form submit event
+   */
+  handleCallbackSubmit(e) {
+    e.preventDefault();
+    const form = e.target;
 
-  });
+    if (!this.validateForm(form)) return;
 
+    const formData = new FormData(form);
+    fetch(form.action, {
+      method: 'POST',
+      body: formData,
+    })
+    .then(response => {
+      if (response.ok) {
+        form.reset();
+        this.showThankYouPopup();
+      } else {
+        throw new Error('Callback submission failed');
+      }
+    })
+    .catch(error => {
+      console.error('Callback submission error:', error);
+      utils.showPopupMessage('⚠️ Failed to submit callback request.', 'error');
+    });
+  },
 
-  document.addEventListener('submit', function (e) {
-    const formElement = document.getElementById('booking-form-element');
-    const popup = document.getElementById('popup-message');
-    const bookingSection = document.querySelector('body');
-  
-    if (e.target === formElement) {
-      e.preventDefault();
-  
-      const selectedPackages = Array.from(document.querySelectorAll('.package-checkbox:checked'))
-        .map(cb => cb.value)
-        .join(', ');
-      const selectedCar = document.querySelector('.car-select button.selected')?.textContent || '';
-  
-      document.getElementById('selected-packages').value = selectedPackages;
-      document.getElementById('selected-car').value = selectedCar;
-  
-      const formData = new FormData(formElement);
-      fetch(formElement.action, {
-        method: 'POST',
-        body: formData,
-      }).then(res => {
-        if (res.ok) {
-          formElement.reset();
-          const thankyouPopup = document.getElementById('thankyouPopup');
-          thankyouPopup.style.display = 'flex';
-          setTimeout(() => {
-            thankyouPopup.style.display = 'none';
-          }, 3000);
+  /**
+   * Validate form inputs
+   * @param {HTMLFormElement} form - Form to validate
+   * @returns {boolean} True if form is valid
+   */
+  validateForm(form) {
+    let isValid = true;
+    const requiredFields = form.querySelectorAll('[required]');
 
+    requiredFields.forEach(field => {
+      if (!field.value.trim()) {
+        field.classList.add('error');
+        isValid = false;
+      } else {
+        field.classList.remove('error');
+      }
+    });
 
-
-          document.getElementById('booking-form').style.display = 'none';
-  
-          // ✅ Show popup and blur background
-          document.getElementById('popup-message').style.display = 'block';
-          document.getElementById('blur-overlay').style.display = 'block';
-
-  
-          // ✅ Hide popup after 2s and remove blur
-          setTimeout(() => {
-            document.getElementById('popup-message').style.display = 'none';
-            document.getElementById('blur-overlay').style.display = 'none';
-          }, 2000);
-          
-        } else {
-          alert('Oops! Something went wrong.');
-        }
-      });
+    // Special phone validation
+    const phoneField = form.querySelector('input[type="tel"]');
+    if (phoneField && phoneField.value) {
+      const phoneRegex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/;
+      if (!phoneRegex.test(phoneField.value)) {
+        phoneField.classList.add('error');
+        isValid = false;
+      }
     }
-  });
-  
-  
 
-  
-  const navLinks = document.querySelectorAll('.navbar .nav-link');
+    if (!isValid) {
+      utils.showPopupMessage('Please fill all required fields correctly', 'error');
+    }
 
-  navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      navLinks.forEach(l => l.classList.remove('active'));
-      link.classList.add('active');
-    });
-  });
+    return isValid;
+  },
 
-  
-  function closeSpringPopup() {
-    const popup = document.getElementById("springPopup");
-    if (popup) popup.style.display = "none";
-    sessionStorage.setItem("springPopupClosed", "true"); // This hides it for current visit
-  }
-  
-  window.addEventListener("load", () => {
-    const hasClosed = sessionStorage.getItem("springPopupClosed");
-  
-    if (!hasClosed) {
+  /**
+   * Show success message after booking
+   */
+  showSuccessMessage() {
+    if (elements.thankyouPopup) {
+      elements.thankyouPopup.style.display = 'flex';
       setTimeout(() => {
-        const popup = document.getElementById("springPopup");
-        if (popup) {
-          popup.style.display = "flex";
-popup.style.opacity = "0";
-setTimeout(() => popup.style.opacity = "1", 10);
-
-        }
-      }, 1500); // Delay optional
+        elements.thankyouPopup.style.display = 'none';
+      }, 3000);
     }
-  
-    // Attach click event to the close button
-    const closeBtn = document.querySelector(".close-popup");
-    if (closeBtn) {
-      closeBtn.addEventListener("click", closeSpringPopup);
-    }
-  });
-  
-  const navMenu = document.getElementById('mainNav');
-  
 
-  // Request a call back button 
-  function openCallbackPopup() {
-    document.getElementById('callbackPopup').style.display = 'flex';
+    const bookingForm = document.getElementById('booking-form');
+    if (bookingForm) bookingForm.style.display = 'none';
+
+    utils.showPopupMessage('🎉 Booking submitted successfully!', 'success');
+  },
+
+  /**
+   * Show thank you popup
+   */
+  showThankYouPopup() {
+    if (elements.thankyouPopup) {
+      elements.thankyouPopup.style.display = 'flex';
+      setTimeout(() => {
+        elements.thankyouPopup.style.display = 'none';
+      }, 3000);
+    }
+  },
+
+  /**
+   * Initialize form handlers
+   */
+  init() {
+    if (elements.bookingForm) {
+      elements.bookingForm.addEventListener('submit', (e) => this.handleBookingSubmit(e));
+    }
+
+    if (elements.callbackForm) {
+      elements.callbackForm.addEventListener('submit', (e) => this.handleCallbackSubmit(e));
+    }
   }
-  
-  function closeCallbackPopup() {
-    document.getElementById('callbackPopup').style.display = 'none';
-  }
-  
-  const menuTrigger = document.querySelector('.menu-hover-area');
-  const mobileDropdown = document.querySelector('.mobile-dropdown');
-  
-  if (menuTrigger && mobileDropdown) {
-    menuTrigger.addEventListener('click', () => {
-      const isOpen = mobileDropdown.style.display === 'flex';
-      mobileDropdown.style.display = isOpen ? 'none' : 'flex';
+};
+
+// UI Module (popups, menus, etc.)
+const uiModule = {
+  /**
+   * Initialize mobile menu
+   */
+  initMobileMenu() {
+    if (!elements.mobileMenuToggle || !elements.mobileMenu) return;
+
+    document.addEventListener('click', (e) => {
+      const isMenuClick = elements.mobileMenuToggle.contains(e.target);
+      const isInsideMenu = elements.mobileMenu.contains(e.target);
+
+      if (isMenuClick) {
+        elements.mobileMenu.style.display = (elements.mobileMenu.style.display === 'flex') ? 'none' : 'flex';
+      } else if (!isInsideMenu) {
+        elements.mobileMenu.style.display = 'none';
+      }
     });
-  } 
-  const menuToggle = document.getElementById('menuToggle');
-const mobileMenu = document.getElementById('mobileMenu');
+  },
 
-document.addEventListener('click', function (e) {
-  const isMenuClick = menuToggle.contains(e.target);
-  const isInsideMenu = mobileMenu.contains(e.target);
+  /**
+   * Initialize popups
+   */
+  initPopups() {
+    // Spring popup - Only show once per user
+    if (elements.springPopup) {
+      // Check if we've shown the popup before
+      if (!localStorage.getItem('springPopupShown')) {
+        setTimeout(() => {
+          elements.springPopup.style.display = "flex";
+          elements.springPopup.style.opacity = "0";
+          setTimeout(() => elements.springPopup.style.opacity = "1", 10);
+          
+          // Mark as shown in localStorage
+          localStorage.setItem('springPopupShown', 'true');
+          
+          // Optional: Set expiration (e.g., show again after 30 days)
+          const expiryDate = new Date();
+          expiryDate.setDate(expiryDate.getDate() + 30);
+          localStorage.setItem('springPopupExpiry', expiryDate.getTime());
+        }, 5000); // Show after 5 seconds
+      }
 
-  if (isMenuClick) {
-    mobileMenu.style.display = (mobileMenu.style.display === 'flex') ? 'none' : 'flex';
-  } else if (!isInsideMenu) {
-    mobileMenu.style.display = 'none';
+      const closeBtn = elements.springPopup.querySelector(".close-popup");
+      if (closeBtn) {
+        closeBtn.addEventListener("click", () => {
+          elements.springPopup.style.display = "none";
+        });
+      }
+    }
+
+    // Callback popup controls
+    window.openCallbackPopup = function() {
+      if (elements.springPopup) elements.springPopup.style.display = 'none';
+      document.getElementById('callbackPopup').style.display = 'flex';
+      document.getElementById('blur-overlay').style.display = 'block';
+    };
+
+    window.closeCallbackPopup = function() {
+      document.getElementById('callbackPopup').style.display = 'none';
+      document.getElementById('blur-overlay').style.display = 'none';
+    };
+
+    // Thank you popup controls
+    window.showThankYouPopup = function() {
+      document.getElementById('thankyouPopup').style.display = 'flex';
+      setTimeout(() => {
+        document.getElementById('thankyouPopup').style.display = 'none';
+      }, 3000);
+    };
+  },
+
+
+
+  /**
+   * Initialize about us slideshow
+   */
+  initSlideshow() {
+    const aboutSlides = document.querySelectorAll('.about-us-slideshow img');
+    if (!aboutSlides.length) return;
+
+    let currentAbout = 0;
+    setInterval(() => {
+      aboutSlides[currentAbout].classList.remove('active');
+      currentAbout = (currentAbout + 1) % aboutSlides.length;
+      aboutSlides[currentAbout].classList.add('active');
+    }, 3000);
+  },
+
+  /**
+   * Initialize nav link active states
+   */
+  initNavLinks() {
+    const navLinks = document.querySelectorAll('.navbar .nav-link');
+    if (!navLinks.length) return;
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+      });
+    });
   }
-});
-const aboutSlides = document.querySelectorAll('.about-us-slideshow img');
-let currentAbout = 0;
+};
 
-setInterval(() => {
-  aboutSlides[currentAbout].classList.remove('active');
-  currentAbout = (currentAbout + 1) % aboutSlides.length;
-  aboutSlides[currentAbout].classList.add('active');
-}, 3000);
- 
+// Main Initialization
+document.addEventListener('DOMContentLoaded', () => {
+  pricingModule.init();
+  formModule.init();
+  uiModule.initMobileMenu();
+  uiModule.initPopups();
+  uiModule.initSlideshow();
+  uiModule.initNavLinks();
+});
