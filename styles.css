@@ -550,7 +550,106 @@
     color: var(--secondary);
     font-size: 18px;
   }
+  /* ==================== BOOKING FORM ==================== */
+  .styled-booking-form {
+    max-width: 700px;               /* limit width */
+    margin: var(--space-lg) auto;   /* center horizontally */
+    background-color: white;
+    padding: var(--space-lg);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-lg);
+    box-shadow: var(--shadow-md);
+    border-radius: var(--radius-md);
+  }
   
+  
+
+
+/* ==================== BOOKING FORM CONTENT WIDTH ==================== */
+/* Center & constrain the form itself */
+.styled-booking-form .form-left form {
+  display: block;
+  margin: 0 auto;        /* center inside the white card */
+  width: 100%;
+  max-width: 450px;       /* <-- tweak this to whatever “less width” you want */
+}
+
+/* Make its inputs fill that inner container */
+.styled-booking-form .form-left form input,
+.styled-booking-form .form-left form textarea {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+.styled-booking-form .form-left h3 {
+  margin-top: 0;
+  margin-bottom: var(--space-md);
+  color: var(--secondary);
+}
+
+.styled-booking-form input,
+.styled-booking-form textarea {
+  width: 100%;
+  padding: var(--space-md);
+  margin-bottom: var(--space-md);
+  border: 1px solid #ccc;
+  border-radius: var(--radius-sm);
+  font-size: 16px;
+}
+
+.styled-booking-form textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.styled-booking-form button[type="submit"] {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-weight: 600;
+  transition: background var(--transition-normal);
+}
+
+.styled-booking-form button[type="submit"]:hover {
+  background-color: var(--primary-dark);
+}
+
+.styled-booking-form .form-right {
+  background-color: var(--secondary);
+  color: white;
+  padding: var(--space-md);
+  border-radius: var(--radius-sm);
+}
+
+.styled-booking-form .form-right h4 {
+  margin-top: 0;
+  margin-bottom: var(--space-sm);
+}
+
+/* ==================== NEED HELP BUTTON ==================== */
+.styled-booking-form .form-right .call-now {
+  display: inline-block;
+  margin-top: 0;
+  padding: var(--space-sm) var(--space-lg);
+  background-color: white;
+  color: rgb(8, 2, 2);
+  border-radius: var(--radius-xl);  font-weight: 600;
+  text-decoration: none;
+  transition: background var(--transition-normal), transform var(--transition-fast);
+}
+
+.styled-booking-form .form-right .call-now:hover {
+  background-color: var(--primary-dark);
+  color: white;
+  transform: scale(1.02);
+}
+
+
   /* ==================== CONTACT ==================== */
   .contact-section {
     background: url('images/contact-us.jpg') no-repeat center center/cover;
@@ -1210,7 +1309,26 @@ max-width: 240px;
       .popup-btn.secondary {
         background-color: #2B2D42;
       }
-      
+        /* Stack the two panels vertically */
+  .styled-booking-form {
+    max-width: 700px;
+  margin: var(--space-lg) auto;
+  }
+
+  /* Make the Help panel full‑width */
+  .styled-booking-form .form-right {
+    width: auto;                    /* let it size to its content */
+    margin: var(--space-md) auto 0; /* center it under the form */
+    padding: var(--space-md);       /* keep its padding */
+  }
+
+  /* Button becomes a full‑width block */
+  .styled-booking-form .form-right .call-now {
+    display: inline-block;
+    width: auto;
+    margin: var(--space-md) auto 0; /* center horizontally */
+    text-align: center;
+  }
   }
   
 

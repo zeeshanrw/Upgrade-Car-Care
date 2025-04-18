@@ -24,14 +24,14 @@ const PRICING_DATA = {
       {
         name: 'Interior Detailing',
         price: '$160',
-        time: '1–1.5 Hrs',
+        time: '1–2 Hrs',
         description: 'Full interior clean, vacuum, windows'
       },
       {
         name: 'Exterior Detailing',
         price: '$260',
         time: '1.5–2 Hrs',
-        description: 'Hand wash, tire clean, spray wax'
+        description: 'Hand wash, tire clean'
       }
     ]
   },
@@ -41,13 +41,13 @@ const PRICING_DATA = {
       {
         name: 'Interior Detailing',
         price: '$180',
-        time: '1.5 Hrs',
+        time: '1.5-2 Hrs',
         description: 'Interior + trunk shampoo, vacuum'
       },
       {
         name: 'Exterior Detailing',
         price: '$280',
-        time: '2 Hrs',
+        time: '2-2.5 Hrs',
         description: 'Exterior hand wash + rim polish'
       }
     ]
@@ -107,6 +107,7 @@ const elements = {
   pricingContent: document.getElementById('pricing-content'),
   bookingForm: document.getElementById('booking-form-element'),
   callbackForm: document.getElementById('callbackForm'),
+  contactForm:   document.getElementById('contact-form'),
   mobileMenuToggle: document.getElementById('menuToggle'),
   mobileMenu: document.getElementById('mobileMenu'),
   springPopup: document.getElementById('springPopup'),
@@ -245,20 +246,29 @@ const pricingModule = {
             <textarea name="message" placeholder="Additional Message (Optional)" aria-label="Additional Message"></textarea>
             <button type="submit">Submit Booking</button>
           </form>
-          <p id="success-msg" class="success-message">
-            🎉 Thank you! Your booking has been sent successfully.
-          </p>
+         
         </div>
         <div class="form-right">
           <h4>Need Help?</h4>
           <p>📞 Call us directly:</p>
-          <a href="tel:6477416424" class="call-now">${utils.formatPhoneNumber('6477416424')}</a>
+          <a href="tel:6476416424" class="call-now">${utils.formatPhoneNumber('6476416424')}</a>
         </div>
       </div>
     `;
 
     elements.pricingContent.innerHTML = pricingHTML + bookingFormHTML;
     document.getElementById('booking-form').style.display = 'none';
+
+        // —— ADD THIS: attach the submit handler now that the form exists ——
+    const bookingEl = document.getElementById('booking-form-element');
+   if (bookingEl) {
+      bookingEl.addEventListener(
+        'submit',
+       formModule.handleBookingSubmit.bind(formModule)
+      );
+    }
+    // — end patch —
+    
     this.attachCheckboxEvents();
   },
 
@@ -341,14 +351,14 @@ const formModule = {
     .then(response => {
       if (response.ok) {
         form.reset();
-        this.showSuccessMessage();
+        this.showThankYouPopup();
       } else {
         throw new Error('Form submission failed');
       }
     })
     .catch(error => {
       console.error('Form submission error:', error);
-      utils.showPopupMessage('⚠️ Failed to submit form. Please try again.', 'error');
+      //utils.showPopupMessage('⚠️ Failed to submit form. Please try again.', 'error');
     });
   },
 
@@ -377,9 +387,35 @@ const formModule = {
     })
     .catch(error => {
       console.error('Callback submission error:', error);
-      utils.showPopupMessage('⚠️ Failed to submit callback request.', 'error');
+      //utils.showPopupMessage('⚠️ Failed to submit callback request.', 'error');
     });
   },
+
+  /**
+ * Handle Contact Us form submission
+ * @param {Event} e
+ */
+handleContactSubmit(e) {
+  e.preventDefault();
+  const form = e.target;
+  if (!this.validateForm(form)) return;
+
+  const formData = new FormData(form);
+  fetch(form.action, {
+    method: 'POST',
+    body: formData,
+  })
+  .then(response => {
+    if (response.ok) {
+      form.reset();
+      this.showThankYouPopup();
+    } else {
+      throw new Error('Contact form submission failed');
+    }
+  })
+  .catch(err => console.error(err));
+},
+
 
   /**
    * Validate form inputs
@@ -410,7 +446,7 @@ const formModule = {
     }
 
     if (!isValid) {
-      utils.showPopupMessage('Please fill all required fields correctly', 'error');
+     // utils.showPopupMessage('Please fill all required fields correctly', 'error');
     }
 
     return isValid;
@@ -419,31 +455,31 @@ const formModule = {
   /**
    * Show success message after booking
    */
-  showSuccessMessage() {
-    if (elements.thankyouPopup) {
-      elements.thankyouPopup.style.display = 'flex';
-      setTimeout(() => {
-        elements.thankyouPopup.style.display = 'none';
-      }, 3000);
-    }
-
-    const bookingForm = document.getElementById('booking-form');
-    if (bookingForm) bookingForm.style.display = 'none';
-
-    utils.showPopupMessage('🎉 Booking submitted successfully!', 'success');
-  },
+ 
 
   /**
    * Show thank you popup
    */
   showThankYouPopup() {
+    // If the callback sheet is open, close both it and the blur
+    const cb = document.getElementById('callbackPopup');
+    if (cb) cb.style.display = 'none';
+    const blur = document.getElementById('blur-overlay');
+    if (blur) blur.style.display = 'none';
+  
+    // Show the unified thank‑you overlay
     if (elements.thankyouPopup) {
       elements.thankyouPopup.style.display = 'flex';
       setTimeout(() => {
         elements.thankyouPopup.style.display = 'none';
       }, 3000);
     }
+  
+    // Optionally hide the booking panel
+    const booking = document.getElementById('booking-form');
+    if (booking) booking.style.display = 'none';
   },
+  
 
   /**
    * Initialize form handlers
@@ -456,6 +492,9 @@ const formModule = {
     if (elements.callbackForm) {
       elements.callbackForm.addEventListener('submit', (e) => this.handleCallbackSubmit(e));
     }
+    if (elements.contactForm) {
+         elements.contactForm.addEventListener('submit', (e) => this.handleContactSubmit(e));
+      }
   }
 };
 
