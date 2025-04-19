@@ -23,15 +23,22 @@ const PRICING_DATA = {
     packages: [
       {
         name: 'Interior Detailing',
-        price: '$160',
+        price: '$150',
         time: '1–2 Hrs',
         description: 'Full interior clean, vacuum, windows'
       },
       {
         name: 'Exterior Detailing',
-        price: '$260',
+        price: '$131',
         time: '1.5–2 Hrs',
         description: 'Hand wash, tire clean'
+      },
+      {
+        name: 'Full Detailing',
+        originalPrice: '$420',      // 160 + 260
+        price: '$250',              // 420 * 0.8
+        time: '3–3.5 Hrs', 
+        description: 'Complete interior and exterior detailing' 
       }
     ]
   },
@@ -40,48 +47,69 @@ const PRICING_DATA = {
     packages: [
       {
         name: 'Interior Detailing',
-        price: '$180',
+        price: '$175',
         time: '1.5-2 Hrs',
         description: 'Interior + trunk shampoo, vacuum'
       },
       {
         name: 'Exterior Detailing',
-        price: '$280',
+        price: '$144',
         time: '2-2.5 Hrs',
         description: 'Exterior hand wash + rim polish'
-      }
+      },
+     { name: 'Full Detailing',
+       originalPrice: '$460', 
+       price: '$300', time: '3.5 Hrs', 
+       description: 'Complete interior and exterior detailing' }
+
     ]
   },
   suv: {
     packages: [
       {
         name: 'Interior Detailing',
-        price: '$200',
+        price: '$225',
         time: '1.75 Hrs',
         description: 'Seats, carpets, leather conditioning'
       },
       {
         name: 'Exterior Detailing',
-        price: '$300',
+        price: '$181',
         time: '2.15 Hrs',
         description: 'Spray wax + clay bar'
-      }
+      },
+      {
+         name: 'Full Detailing', 
+         originalPrice: '$500', 
+         price: '$374', 
+         time: '3.75 Hrs', 
+         description: 'Complete interior and exterior detailing'
+       }
+
     ]
   },
   minivan: {
     packages: [
       {
         name: 'Interior Detailing',
-        price: '$210',
+        price: '$275',
         time: '2 Hrs',
         description: 'Full cabin & trunk deep clean'
       },
       {
         name: 'Exterior Detailing',
-        price: '$320',
+        price: '$200',
         time: '2.5 Hrs',
         description: 'Wax + polish + tire dressing'
-      }
+      },
+      {
+         name: 'Full Detailing',
+          originalPrice: '$530', 
+          price: '$400', 
+          time: '4.5 Hrs', 
+          description: 'Complete interior and exterior detailing' 
+        }
+
     ]
   },
   pickup: {
@@ -94,10 +122,18 @@ const PRICING_DATA = {
       },
       {
         name: 'Exterior Detailing',
-        price: '$350',
+        price: '$250',
         time: '2.75 Hrs',
         description: 'Full polish, clay bar, sealant'
+      },
+      {
+        name: 'Full Detailing', 
+        originalPrice: '$570', 
+        price: '$431', 
+        time: '5 Hrs', 
+        description: 'Complete interior and exterior detailing' 
       }
+
     ]
   }
 };
@@ -197,6 +233,8 @@ const pricingModule = {
     `;
 
     packages.forEach(pkg => {
+      const orig = parseFloat(pkg.price.replace('$',''));
+  const disc = Math.round(orig * 0.8);
       tableHTML += `
         <tr>
           <td>
@@ -207,11 +245,14 @@ const pricingModule = {
                    aria-label="Select ${pkg.name} package">
           </td>
           <td>${pkg.name}</td>
-          <td>${pkg.price}</td>
-          <td>${pkg.time}</td>
-          <td>${pkg.description}</td>
-        </tr>
-      `;
+      <td>
+        <span class="orig-price">$${orig}</span>
+        <span class="disc-price">$${disc}</span>
+      </td>
+      <td>${pkg.time}</td>
+      <td>${pkg.description}</td>
+    </tr>
+  `;
     });
 
     tableHTML += `
@@ -257,6 +298,7 @@ const pricingModule = {
     `;
 
     elements.pricingContent.innerHTML = pricingHTML + bookingFormHTML;
+    
     document.getElementById('booking-form').style.display = 'none';
 
         // —— ADD THIS: attach the submit handler now that the form exists ——

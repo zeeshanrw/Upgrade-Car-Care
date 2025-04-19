@@ -1,5 +1,9 @@
 /* ==================== CSS VARIABLES ==================== */
 :root {
+
+  --font-heading: 'Montserrat', sans-serif;
+  --font-body:    'Open Sans', sans-serif;
+
     /* Colors */
     --primary: #E63946;
     --primary-dark: #c62828;
@@ -48,7 +52,7 @@
   }
   
   body {
-    font-family: 'Futura', 'Segoe UI', 'Helvetica Neue', sans-serif;
+    font-family: var(--font-body);
     margin: 0;
     padding: 0;
     background: var(--bg-light);
@@ -60,6 +64,7 @@
   }
   
   h1, h2, h3, h4 {
+    font-family: var(--font-heading);
     font-weight: 600;
     margin-top: 0;
     line-height: 1.2;
@@ -222,7 +227,28 @@
   .cta-header button:hover {
     background-color: var(--primary-dark);
   }
-  
+  /* ==================== PHONE BUTTON IN NAVBAR ==================== */
+.phone-link-inline {
+  display: inline-block;
+  background-color: white;
+  color: rgb(5, 2, 2);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-xl);
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.phone-link-inline:hover {
+  background-color: var(--primary-dark);
+  color: white;
+  transform: scale(1.05);
+}
+
+.phone-link-inline:active {
+  transform: scale(0.95);
+}
+
   @keyframes buttonGlow {
     0%, 100% {
       box-shadow: 0 0 5px rgba(230, 57, 70, 0.3);
@@ -242,15 +268,37 @@
     font-size: 16px;
   }
   
-  .flash-text {
-    animation: flash 6s ease-in-out infinite;
+  .promo-bar .flash-text {
+    animation: blink 1s step-start infinite;
+  }
+  
+  @keyframes blink {
+    0%, 49% { opacity: 1; }
+    50%, 100% { opacity: 0; }
   }
   
   @keyframes flash {
     0%, 100% { opacity: 1; }
     50% { opacity: 0.5; }
   }
-  
+  /* ==================== PROMO BAR PHONE BUTTON ==================== */
+.promo-bar .phone-link {
+  display: inline-block;
+  background-color: white;
+  color: var(--primary);
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--radius-xl);
+  font-weight: 600;
+  text-decoration: none;
+  margin-left: var(--space-sm);
+  transition: background var(--transition-normal), color var(--transition-normal);
+}
+
+.promo-bar .phone-link:hover {
+  background-color: var(--primary-dark);
+  color: white;
+}
+
   /* ==================== HERO SECTION ==================== */
   .first-fold {
     position: relative;
@@ -550,6 +598,19 @@
     color: var(--secondary);
     font-size: 18px;
   }
+  /* ==================== DISCOUNTED PRICE STYLES ==================== */
+.pricing-table .orig-price {
+  text-decoration: line-through;
+  color: var(--text-muted);
+  margin-right: var(--space-xs);
+  display: inline-block;
+}
+.pricing-table .disc-price {
+  color: var(--primary);
+  font-weight: bold;
+  display: inline-block;
+}
+
   /* ==================== BOOKING FORM ==================== */
   .styled-booking-form {
     max-width: 700px;               /* limit width */
@@ -867,6 +928,11 @@
   }
   
   /* ==================== POPUPS & MODALS ==================== */
+  /* hide the unused static popup on prices.html */
+#popup-message {
+  display: none;
+}
+
   .spring-popup-overlay {
     position: fixed;
     top: 0;
